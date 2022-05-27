@@ -1,16 +1,142 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .bigMenu-icon{
+    @apply relative flex items-center justify-center
+            h-16 w-16 sm:h-24 sm:w-24 shadow-3xl p-2
+            cursor-pointer
+            transition-all duration-300 ease-linear;
+}
+  .sidebar-icon{
+      @apply relative flex items-center justify-center
+              shadow-3xl 
+              rounded-xl hover:text-white
+              cursor-pointer
+              transition-all duration-300 ease-linear;
+  }
+  .sidebar-tooltip{
+      @apply absolute p-2 my-2 min-w-max bottom-14 
+              rounded-xl shadow-lg text-white bg-gray-900
+              text-xs font-bold origin-bottom
+              transition-all duration-300 scale-0
+  }
+  .button-hover-white{
+    @apply text-gray-200 hover:text-white transition-all duration-200
+  }
+  .mathgame-button{
+    @apply py-1 px-3 bg-white bg-opacity-10 mx-auto cursor-pointer shadow-answers active:shadow-answers-inner border-transparent md:active:border-transparent rounded-full text-xl duration-100
+  }
+  .white-buy-button{
+    @apply h-full w-1/2 flex items-center justify-center 
+      text-lg lg:text-xl xl:text-2xl overflow-hidden
+      border-4 border-black rounded-3xl
+      font-bold
+      duration-300
+      bg-black
+      bg-opacity-80
+  }
+}
+
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("/fonts/CinzelDecorative-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("/fonts/CinzelDecorative-Bold.ttf");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("/fonts/CinzelDecorative-Black.ttf");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+
 html,
 body {
   padding: 0;
   margin: 0;
+  background-color: black;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
+  color: rgb(2, 255, 234);
   text-decoration: none;
+}
+a:active{
+  color: rgb(255, 2, 213);
 }
 
 * {
   box-sizing: border-box;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+.image{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.textShadow{
+  text-shadow: 0 0 2px black, 0 0 5px black, 0 0 7px black;
+}
+.textShadowLight{
+  text-shadow: 0 0 2px black, 0 0 3px black, 0 0 4px black;
+}
+.textShadow-lg{
+  text-shadow: 0 0 2px black, 0 0 5px black, 0 0 7px black, 0 0 10px black;
+}
+.shadow{
+  box-shadow: 0px 5px 10px 0px black;
+}
+.bigShadow{
+  box-shadow: 0px 15px 45px 0px rgba(0, 0, 0, 0.568), 0px 15px 75px 0px black;
+}
+
+.backdrop{
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+/* if backdrop support: very transparent and blurred */
+/* @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .backdrop{
+    background-color: rgba(0, 0, 0, 0.319);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+  }
+} */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

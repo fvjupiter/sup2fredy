@@ -1,0 +1,33 @@
+.wrapper{
+    margin: 2rem auto;
+    /* // font-size: 2.2rem;
+    // width: 80%; */
+    line-height: 4rem;
+    white-space: pre-wrap;
+    z-index: 10;
+}
+.char{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+    width: fit-content;
+    min-width: 10px;
+    font-size: 35px;
+    display: flex;
+    top: 0;
+    left: 0;
+}
+.ani{
+    opacity: 0;
+    animation-name: fly;
+    animation-duration: 3000ms;
+    animation-fill-mode: forwards;  
+}
+@keyframes fly {
+    100% { 
+        top: 0px; 
+        left: 0px;
+        opacity: 1;
+    }
+}
