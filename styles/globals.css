@@ -5,6 +5,9 @@
 @tailwind utilities;
 
 @layer components {
+  .center{
+    @apply flex items-center justify-center;
+  }
   .bigMenu-icon{
     @apply relative flex items-center justify-center
             h-16 w-16 sm:h-24 sm:w-24 shadow-3xl p-2
@@ -139,4 +142,13 @@ a:active{
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+.synesthesigns {
+  background-color: #ceff46;
+  background-image: linear-gradient(45deg, rgb(255, 0, 0), rgb(255, 251, 0), rgb(136, 255, 0), rgb(0, 255, 242), rgb(132, 0, 255));
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
 }

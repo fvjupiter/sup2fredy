@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { continueAtStates, isInfoState, isShowMenuState } from '../lib/states'
+import { continueAtStates, isInfoState, isShowMenuState } from '../../lib/states'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import Link from 'next/link'
-import { Icon } from '../lib/icons'
+import { Icon } from '../../lib/icons'
 
 export default function BottomBar() {
     const router = useRouter()

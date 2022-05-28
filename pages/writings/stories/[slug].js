@@ -4,7 +4,7 @@ import PageTitle from '../../../components/PageTitle'
 import { useRecoilState } from 'recoil'
 import { slugListState } from '../../../lib/states'
 import { createClient } from 'contentful'
-import ContentCard from '../../../components/ContentCard'
+import ContentCard from '../../../components/cards/ContentCard'
 import { INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 

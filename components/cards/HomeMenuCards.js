@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { continueAtStates } from '../lib/states'
+import { continueAtStates } from '../../lib/states'
 import Image from 'next/image'
-import { bg_writings, bg_music, bg_software, bg_shop, bg_placeholderImg } from '../lib/bg'
-import Fredy from '../public/img/fredyCrop.jpeg'
+import { bg_writings, bg_music, bg_software, bg_shop } from '../../lib/bg'
+import Fredy from '../../public/img/fredyCrop.jpeg'
 import { useRecoilValue } from 'recoil';
 import Link from 'next/link'
-import { Icon } from '../lib/icons'
+import { Icon } from '../../lib/icons'
 
 export default function HomeMenuTiles() {
     const router = useRouter()
@@ -68,13 +68,12 @@ const NavItem = ({ index, href, title, content, icon, border, text, bgImg, ifCli
             <Image className={`opacity-50 group-hover:opacity-100 transform group-active:scale-[2] ${ifClickedScale} transition-all duration-300`}
                     src={bgImg}
                     placeholder="blur"
-                    blurDataURL={bg_placeholderImg}
                     layout='fill' 
                     objectFit='cover'
                     objectPosition='center'
                 />
             <div className={`absolute w-full mr-2 border-t-2 ${border} ${ifClickedOpacity} group-active:opacity-0 textShadow text-white transition-all duration-100 z-10 backdrop bg-opacity-60 bg-black px-3 py-1 flex items-center justify-between`}>
-                <div className='text-md sm:text-lg font-extralight'>{title}</div><div className='text-md sm:text-lg font-extralight'>{content}</div>
+                <div className='text-md sm:text-lg font-extralight'>{title}</div><div className='text-sm sm:text-lg font-extralight'>{content}</div>
             </div>
             <div
                 className={`left-[106px] sm:left-32 md:left-40 z-20 bigMenu-icon group ${border} ${ifClickedOpacity} ${text} shadow-4xl group-active:opacity-0 duration-100 border-2 backdrop bg-opacity-60 bg-black`}>

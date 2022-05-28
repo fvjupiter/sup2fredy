@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import PreviewCards from '../../components/PreviewCards'
+import PreviewCards from '../../components/cards/PreviewCards'
 
 export default function Games() {
     const apps = [

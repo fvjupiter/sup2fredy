@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Icon } from '../lib/icons'
+import { Icon } from '../../lib/icons'
 
 export default function PricingCard({ data, index, cardId, setCardId, priceData, toggleData, setToggleData, setSectionsData }) {
     const [isCardInfo, setisCardInfo] = useState(false)

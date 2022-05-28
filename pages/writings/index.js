@@ -1,6 +1,6 @@
 import React from 'react'
 import PageTitle from '../../components/PageTitle'
-import MenuCards from '../../components/MenuCards'
+import MenuCards from '../../components/cards/MenuCards'
 import { bg_writings } from '../../lib/bg'
 
 export default function Writings() {

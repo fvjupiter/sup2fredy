@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { screenState } from '../lib/states'
+import { screenState } from '../../lib/states'
 import { useRecoilValue } from 'recoil'
 
 export default function MenuCard({ index, href, isClicked, title, img, ringHover, children }) {

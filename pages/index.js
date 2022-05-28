@@ -1,22 +1,46 @@
-import HomeMenuTiles from '../components/HomeMenuTiles'
+import HomeMenuTiles from '../components/cards/HomeMenuCards'
 import React, { useState, useEffect } from 'react'
 import MagicText from '../components/MagicText'
-import { useSetRecoilState, useRecoilState } from 'recoil'
-import { isLandingPageState, isShowMenuState } from '../lib/states'
+import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil'
+import { isLandingPageState, isShowMenuState, screenState } from '../lib/states'
 
 export default function Home() {
   const setisShowMenu = useSetRecoilState(isShowMenuState)
   const [displayMagic, setdisplayMagic] = useState(true)
   const [isLandingPage, setisLandingPage] = useRecoilState(isLandingPageState)
+  const screen = useRecoilValue(screenState)
+  console.log(screen)
   useEffect(() => setisShowMenu(isLandingPage ? false : true), [isLandingPage])
-  const introText = [
+  const introText = screen.width <= 640 ? 
+    [`Hi Stranger & welcome to`,
+      `SUP2FREDY!`,
+      `My name is, well ...`,
+      `Fredy & I'm the creator`,
+      `of this Web-App.`,
+      `You will find a lot`, 
+      `of different selfmade`,
+      `content in here`,
+      `so turn on,`,
+      `tune in`,
+      `&`,
+      `enjoy ;-)`
+    ] : screen.width <= 1280 ? [
+      `Hi Stranger & welcome to`,
+      `SUP2FREDY!`, 
+      `My name is, well ...`,
+      `Fredy & I'm the creator of this Web-App.`,
+      `You will find a lot of different,`,
+      `selfmade content in here`, 
+      `so turn on, tune in & enjoy ;-)`
+    ]
+    : [
     `Hi Stranger & welcome to SUP2FREDY!`, 
     `My name is, well ... Fredy & I'm the creator of this Web-App.`,
     `You will find a lot of different selfmade content in here`, 
     `so turn on, tune in & enjoy ;-)`
   ]
   return <>
-    {displayMagic && <div className={`fixed top-0 z-90 flex justify-center items-center bg-black w-full ${isLandingPage ? 'opacity-100 h-full' : 'opacity-0 h-0'}`}>
+    {displayMagic && screen.width > 110 && <div className={`fixed top-0 z-90 flex justify-center items-center bg-black w-full ${isLandingPage ? 'opacity-100 h-full' : 'opacity-0 h-0'}`}>
       <div className=''>
         <MagicText lineArr={introText}>
           <div onClick={() => { setTimeout(() => setdisplayMagic(false), 1000); setisLandingPage(false) }} 
@@ -35,11 +59,11 @@ export default function Home() {
     <div className={`w-full sm:w-10/12 md:w-8/12 xl:w-6/12 mx-auto px-1 transition-opacity duration-1000 ${!isLandingPage ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
       <h1 className='text-4xl sm:text-5xl xl:text-6xl font-cursive textShadow-lg text-white font-extrabold mx-auto w-max my-3 sm:my-5'>SUP2FREDY</h1>
       <HomeMenuTiles />
-      <ul className='font-extralight text-white text-sm backdrop bg-opacity-60 bg-black my-4 mx-auto w-full sm:w-11/12 p-2 px-3 rounded-xl ring-2 ring-gray-600'>
+      {/* <ul className='font-extralight text-white text-sm backdrop bg-opacity-60 bg-black my-4 mx-auto w-full sm:w-11/12 p-2 px-3 rounded-xl ring-2 ring-gray-600'>
         <li>All content as well as the Website itself is made by Frederik Schoof.</li>
         <li>Background-Images are licence-free from <a href='https://pixabay.com/' target='_blank'>@pixabay</a></li>
         <li>Icons are licence-free from <a href='https://react-icons.github.io/react-icons' target='_blank'>@react-icons</a></li>
-      </ul>
+      </ul> */}
       <div onClick={() => { setdisplayMagic(true); setisLandingPage(true) }} className='text-white'>showMaagic</div>
     </div>
   </>

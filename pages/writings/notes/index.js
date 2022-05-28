@@ -1,6 +1,6 @@
 import React from 'react'
 import { createClient } from 'contentful'
-import PreviewCards from '../../../components/PreviewCards'
+import PreviewCards from '../../../components/cards/PreviewCards'
 
 export default function Notes({ notes }) {
     return <>

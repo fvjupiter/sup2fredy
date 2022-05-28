@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { screenState } from '../lib/states'
 import PageTitle from './PageTitle'
-import PricingCards from './PricingCards'
+import PricingCards from './cards/PricingCards'
 
 export default function Pricing({ data }) {
     const screen = useRecoilValue(screenState)

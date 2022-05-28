@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PageTitle from '../../components/PageTitle'
-import MenuCards from '../../components/MenuCards'
+import MenuCards from '../../components/cards/MenuCards'
 import { bg_shop, bg_placeholderImg } from '../../lib/bg'
 
 export default function Shop() {

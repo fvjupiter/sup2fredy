@@ -1,5 +1,5 @@
 import React from 'react';
-import PageTitle from './PageTitle';
+import PageTitle from '../PageTitle';
 import PreviewCard from './PreviewCard';
 
 export default function PreviewCards({ title, data, folder, ringColor }) {

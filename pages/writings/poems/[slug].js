@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 import { createClient } from 'contentful'
-import ContentCard from '../../../components/ContentCard'
+import ContentCard from '../../../components/cards/ContentCard'
 import { slugListState } from '../../../lib/states'
 
 export default function Poem({ poem, poemSlugList }) {

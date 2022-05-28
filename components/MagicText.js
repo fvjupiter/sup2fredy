@@ -1,55 +1,51 @@
-import React, {useState, useEffect, useContext } from 'react'
+import React, {useState, useEffect } from 'react'
 import styles from '../styles/MagicText.module.css'
 
 export default function MagicText({ lineArr, children }) {
-    // const { isDark, homePageLoads } = useContext(ColorContext)
     const [isAni, setisAni] = useState(true)
     useEffect(() => {
       const timeO = setTimeout(() => setisAni(false) , lineArr.length * 1500)
       return () => clearTimeout(timeO)
     }, [])
 
-    const Line = ({ index, line, delay }) => {
-        const charArr = line.split('')
-        let letterDelay = 0
-        const spanArr = charArr.map(element => {
-            const spanSty = {
-                color: 'white',
-                top: isAni ?  random(-1000, 1000) : 0,
-                left: isAni ?  random(-1000, 1000) : 0,
-                animationDelay: delay+letterDelay+'ms',
-            }
-            letterDelay += 20
-            return (
-                <span 
-                    key={element + random(0,10000)} 
-                    style={spanSty} 
-                    className={`font-cursive ${styles.char} ${isAni ? styles.ani : ''}`} 
-                >{element}</span>
-            )
-        });
-        return <div style={{display: 'flex'}}>{spanArr}</div>
+    const Line = ({ line, delay }) => {
+      const charArr = line.split('')
+      let letterDelay = 0
+      const spanArr = charArr.map(char => {
+          const spanSty = {
+              color: 'white',
+              top: isAni ?  random(-1000, 1000) : 0,
+              left: isAni ?  random(-1000, 1000) : 0,
+              animationDelay: delay+letterDelay+'ms',
+          }
+          letterDelay += 20
+          return <span 
+            key={char + random(0,10000)} 
+            style={spanSty} 
+            className={`h-fit w-fit min-w-[10px] flex top-0 left-0 m-0 p-0 relative ${isAni && styles.ani}
+              font-cursive text-xl sm:text-2xl md:text-3xl lg:text-4xl`}
+              >{char}
+          </span>
+      })
+      return <div className='flex'>{spanArr}</div>
     }
-    const getLines = (lineArr) => lineArr.map((line, index) => <div key={index} className='flex justify-center'>
-      <Line index={index} line={line} delay={index* 750} />
-    </div>)
-    
-    const getLinesWithoutAni = (lineArr) => {
-      return lineArr.map((line, index) => <span key={index} 
-          style={{color: 'white', margin: 'auto'}} 
-          className={`serif ${styles.char}`}>{line}
-        </span> 
-      )
-    }
-    return (<>
-      <div className={styles.wrapper}>
-        {
-        // homePageLoads > 1 ? getLinesWithoutAni(lineArr) : 
-        getLines(lineArr)}
-        {children && <div className={`${!isAni ? 'opacity-100 w-56 scale-100' : 'opacity-0 w-full scale-0'} duration-1000 ease-in-out mx-auto hover:opacity-100`}>{children}</div>}
+
+    const getLines = (lineArr) => lineArr.map((line, index) => (
+      <div key={index} className='flex justify-center my-1 sm:my-2 md:my-3 xl:my-4'>
+        <Line index={index} line={line} delay={index* 750} />
       </div>
-    </>)
+    ))
+
+    return <>
+      <div className={`whitespace-pre-wrap z-10`}>
+        {getLines(lineArr)}
+        {children && <div 
+          className={`${!isAni ? 'opacity-100 w-56 scale-100' : 'opacity-0 w-full scale-0'} 
+            duration-1000 ease-in-out mx-auto hover:opacity-100`}
+          >{children}
+        </div>}
+      </div>
+    </>
 }
-function random(min, max){
-    return (Math.floor(Math.random() * (max-min))) + min;
-  }
+
+const random = (min, max) => (Math.floor(Math.random() * (max-min))) + min

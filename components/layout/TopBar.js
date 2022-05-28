@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-import { isFullscreenState, isInfoState, totalCountState, isShowMenuState, slugListState } from '../lib/states'
+import { isFullscreenState, isInfoState, totalCountState, isShowMenuState, slugListState } from '../../lib/states'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import Link from 'next/link'
-import { Icon } from '../lib/icons'
+import { Icon } from '../../lib/icons'
 
 export default function TopBar({ handleFullscreen }) {
     const router = useRouter()
