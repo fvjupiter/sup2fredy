@@ -27,28 +27,28 @@ export default function TopBar({ handleFullscreen }) {
     const goBack = icon => {
         const indexSlug = slugList[param2].indexOf(param3)
         return [
-            [`/${param1}/${param2}/${indexSlug > 0 ? slugList[param2][indexSlug -1] : slugList[param2][slugList[param2].length-1]}`, <Icon id={'arrowLeft'} size={18} classN='mt-0.5'/>, 'previous', '', true],
+            [`/${param1}/${param2}/${indexSlug > 0 ? slugList[param2][indexSlug -1] : slugList[param2][slugList[param2].length-1]}`, <Icon key={'0'} id={'arrowLeft'} size={18} classN='mt-0.5'/>, 'previous', '', true],
             [goBackPath, icon, 'back', '', true],
-            [`/${param1}/${param2}/${indexSlug < slugList[param2].length-1 ? slugList[param2][indexSlug +1] : slugList[param2][0]}`, <Icon id={'arrowRight'} size={18} classN='mt-0.5'/>, 'next', '', true]
+            [`/${param1}/${param2}/${indexSlug < slugList[param2].length-1 ? slugList[param2][indexSlug +1] : slugList[param2][0]}`, <Icon key={'1'} id={'arrowRight'} size={18} classN='mt-0.5'/>, 'next', '', true]
         ]
     }
     const getNavItems = () => {
         switch (param1) {
             case 'writings': return !param3 ? [
-                    ['/writings', <Icon id={'writings'} size={22}/>, 'Menu', 'text-lime-400', true],
+                    ['/writings', <Icon key={'2'} id={'writings'} size={22}/>, 'Menu', 'text-lime-400', true],
                     ['/writings/poems', 'Poems', '', 'bg-lime-400 text-gray-900'],
                     ['/writings/notes', 'Notes', '', 'bg-emerald-400 text-gray-900'],
                     ['/writings/stories', 'Stories', '', 'bg-green-400 text-gray-900']
-                ] : goBack(<Icon id={'writings'} size={22}/>)
+                ] : goBack(<Icon key={'3'} id={'writings'} size={22}/>)
             // case 'music': return !param3 ? [
             //         ['/music/singles', 'Singles', '', 'bg-orange-400 text-gray-900'],
             //         ['/music/albums', 'Albums', '', 'bg-yellow-400 text-gray-900']
             //     ] : goBack(<Icon id={'music'} size={22}/>)
             case 'software': return !param2 ? [
                     // ['/software', '', '', 'bg-pink-400 text-gray-900']
-                ] : [[goBackPath, <Icon id={'software'} size={22}/>, 'Menu', '', true]]
+                ] : [[goBackPath, <Icon key={'4'} id={'software'} size={22}/>, 'Menu', '', true]]
             case 'shop': return [
-                    ['/shop', <Icon id={'shop'} size={22}/>, 'Menu', 'text-cyan-400', true],
+                    ['/shop', <Icon key={'5'} id={'shop'} size={22}/>, 'Menu', 'text-cyan-400', true],
                     ['/shop/web-service', 'Web-Service', '', 'bg-cyan-400 text-gray-900'],
                     ['/shop/art', 'Art', '', 'bg-cyan-400 text-gray-900'],
                     ['/shop/nft', 'NFT', '', 'bg-cyan-400 text-gray-900'],
@@ -79,14 +79,12 @@ export default function TopBar({ handleFullscreen }) {
                 </div>
                 <div className='flex overflow-x-scroll'>
                     {getNavItems() && getNavItems().map((item, index) => (
-                        // <div key={index}>
-                            <NavItem index={index} href={item[0]} 
-                                title={item[1]} 
-                                tooltipTitle={item[2]}
-                                border={item[0] == asPath && item[3]}
-                                isIcon={item[4]}
-                            />
-                        // </div> 
+                        <NavItem key={index} index={index} href={item[0]} 
+                            title={item[1]} 
+                            tooltipTitle={item[2]}
+                            border={item[0] == asPath && item[3]}
+                            isIcon={item[4]}
+                        />
                     ))}
                 </div>
             </div>
@@ -95,18 +93,16 @@ export default function TopBar({ handleFullscreen }) {
 }
 
 const NavItem = ({ index, title, href, border, isIcon, tooltipTitle }) => {
-    return <div key={`${index}${title}`} className='center'>
-        <Link href={href}>
-            <div className={`group ${!isIcon ? 'px-3.5 py-1.5' : 'mx-2'} flex items-center justify-center cursor-pointer text-center rounded-full whitespace-nowrap
-                    ${border ? border : 'button-hover-white'}`}
-                >
-                {isIcon && <div className={`sidebar-tooltip group-hover:scale-100 bottom-[-48px] origin-top`}>
-                    {tooltipTitle}
-                </div>}
-                {title}
-            </div>
-        </Link>
-    </div>
+    return <Link href={href}>
+        <div className={`group ${!isIcon ? 'px-3.5 py-1.5' : 'mx-2'} flex items-center justify-center cursor-pointer text-center rounded-full whitespace-nowrap
+                ${border ? border : 'button-hover-white'}`}
+            >
+            {isIcon && <div className={`sidebar-tooltip group-hover:scale-100 bottom-[-48px] origin-top`}>
+                {tooltipTitle}
+            </div>}
+            {title}
+        </div>
+    </Link>
 }
 
 const Toggle = ({ icon, tooltipTitle, clickHandle }) => (
