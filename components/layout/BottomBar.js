@@ -28,11 +28,11 @@ export default function BottomBar() {
 
     const iconClassName = `${!isSmall ? 'scale-100' : 'scale-0'} transition-transform duration-300`
     const navItems = [
-        [continueAt.writings, 'Writings', <Icon id='writings' classN={iconClassName} size={70}/>, 'hover:bg-lime-400 border-lime-400', 'bg-lime-400 hover:shadow-inner-none shadow-none text-white', 'text-lime-400'],
-        [continueAt.music, 'Music', <Icon id='music' classN={iconClassName} size={70}/>, 'hover:bg-orange-400 border-orange-400', 'bg-orange-400 hover:shadow-inner-none shadow-none text-white', 'text-orange-400'],
-        [continueAt.software, 'Software', <Icon id='software' classN={iconClassName} size={70}/>, 'hover:bg-pink-400 border-pink-400', 'bg-pink-400 hover:shadow-inner-none shadow-none text-white', 'text-pink-400'],
-        [continueAt.about, 'About', <Icon id='about' classN={iconClassName} size={70}/>, 'hover:bg-purple-400 border-purple-400', 'bg-purple-400 hover:shadow-inner-none shadow-none text-white', 'text-purple-400'],
-        [continueAt.shop, 'Shop', <Icon id='shop' classN={iconClassName} size={70}/>, 'hover:bg-cyan-400 border-cyan-400', 'bg-cyan-400 hover:shadow-inner-none shadow-none text-white', 'text-cyan-400'],
+        [continueAt.writings, 'Writings', <Icon key={'0'} id='writings' classN={iconClassName} size={70}/>, 'hover:bg-lime-400 border-lime-400', 'bg-lime-400 hover:shadow-inner-none shadow-none text-white', 'text-lime-400'],
+        [continueAt.music, 'Music', <Icon key={'1'} id='music' classN={iconClassName} size={70}/>, 'hover:bg-orange-400 border-orange-400', 'bg-orange-400 hover:shadow-inner-none shadow-none text-white', 'text-orange-400'],
+        [continueAt.software, 'Software', <Icon key={'2'} id='software' classN={iconClassName} size={70}/>, 'hover:bg-pink-400 border-pink-400', 'bg-pink-400 hover:shadow-inner-none shadow-none text-white', 'text-pink-400'],
+        [continueAt.about, 'About', <Icon key={'3'} id='about' classN={iconClassName} size={70}/>, 'hover:bg-purple-400 border-purple-400', 'bg-purple-400 hover:shadow-inner-none shadow-none text-white', 'text-purple-400'],
+        [continueAt.shop, 'Shop', <Icon key={'4'} id='shop' classN={iconClassName} size={70}/>, 'hover:bg-cyan-400 border-cyan-400', 'bg-cyan-400 hover:shadow-inner-none shadow-none text-white', 'text-cyan-400'],
     ]
 
     return <>
