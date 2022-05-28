@@ -26,7 +26,7 @@ const data = [
         img: bg_writings.notes,
         ringHover: 'hover:ring-emerald-400',
         childrenLi: <>
-            Here you'll find <span className='font-bold'>Thoughts</span> and <span className='font-bold'>Notes</span> that just came 
+            Here you&apos;ll find <span className='font-bold'>Thoughts</span> and <span className='font-bold'>Notes</span> that just came 
             to my mind
         </>
     },

@@ -31,7 +31,7 @@ const data = [
         childrenLi: <>
             <li><span className='font-bold'>Poems</span> on plates &amp; posters with original artwork by <a>@Imke</a></li>
             <li><span className='font-bold'>E-Books</span></li>
-            <li><span className='font-bold'>Music</span> (MP3's / CD's / LP's)</li>
+            <li><span className='font-bold'>Music</span> (MP3&apos;s / CD&apos;s / LP&apos;s)</li>
             {/* <li><span className='font-bold'>Commissioned Work</span></li> */}
         </>
     },
