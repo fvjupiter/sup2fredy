@@ -24,7 +24,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            notes: res.items,
+            notes: res.items
         }
     }
 }

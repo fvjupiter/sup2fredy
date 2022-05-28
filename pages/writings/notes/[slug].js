@@ -49,8 +49,7 @@ export async function getStaticProps({ params }) {
 
     const { items } = await client.getEntries({ 
         content_type: 'note',
-        'fields.slug': params.slug,
-    
+        'fields.slug': params.slug
     })
 
     const res2 = await client.getEntries({ content_type: 'note', order: 'fields.indexFloat' })
