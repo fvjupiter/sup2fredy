@@ -54,6 +54,7 @@ export default function BottomBar() {
                 </Link>
                 {navItems.map((item, index) => (
                     <NavItem 
+                        key={index}
                         index={index} 
                         href={
                             item[0] == asPath && param1 ? `${item[0].split('/').slice(0, -1).join('/')}` //goBack one
@@ -86,7 +87,7 @@ const NavItem = ({ index, href, title, icon, colors, ifClicked, setisClicked }) 
     const isHome = router.pathname.split('/')[1] == ''
     const isSmall = !isInfo && (isHome || param2 == 'mathgame')//(router.asPath.split('/')[3] || isHome) && !isInfo
     return <div key={`${index}${title}`} className='center'>
-        <Link href={href}>
+        <Link key={index} href={href}>
             <div onClick={() => setTimeout(() => setisInfo(false), 300)}
                 className={`sidebar-icon group ${colors} active:shadow-inner-xl active:duration-100 border-2 ${ifClicked} ${isInfo ? 'h-12 w-12 p-1.5' : isSmall ? 'h-3 w-12 p-0' : 'h-12 w-12 p-1.5'}`}>
                 <div className={`sidebar-tooltip group-hover:scale-100 ${isSmall && 'bottom-3'} ${isInfo && 'scale-100 bg-transparent shadow-none bottom-12 duration-300'}`}>
