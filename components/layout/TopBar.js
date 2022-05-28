@@ -79,12 +79,14 @@ export default function TopBar({ handleFullscreen }) {
                 </div>
                 <div className='flex overflow-x-scroll'>
                     {getNavItems() && getNavItems().map((item, index) => (
-                        <NavItem key={index} index={index} href={item[0]} 
-                            title={item[1]} 
-                            tooltipTitle={item[2]}
-                            border={item[0] == asPath && item[3]}
-                            isIcon={item[4]}
-                        />
+                        <div key={index}>
+                            <NavItem key={index} index={index} href={item[0]} 
+                                title={item[1]} 
+                                tooltipTitle={item[2]}
+                                border={item[0] == asPath && item[3]}
+                                isIcon={item[4]}
+                            />
+                        </div>
                     ))}
                 </div>
             </div>

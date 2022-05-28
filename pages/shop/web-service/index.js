@@ -72,6 +72,7 @@ const templateData = {
     titleArr: ['Portfolio', 'Blog', 'Company', 'Shop', 'Community'],
     boxList: [
       <Image className='z-0'
+              key={'0'}
           src={bg_home.menu}
           placeholder="blur"
           blurDataURL={bg_placeholderImg}
@@ -80,6 +81,7 @@ const templateData = {
           objectPosition='center'
       />,
       <Image className='z-0'
+              key={'1'}
               src={bg_music.menu}
               placeholder="blur"
               blurDataURL={bg_placeholderImg}
@@ -88,6 +90,7 @@ const templateData = {
               objectPosition='center'
       />,
       <Image className='z-0'
+              key={'2'}
               src={bg_software.menu}
               placeholder="blur"
               blurDataURL={bg_placeholderImg}
@@ -96,6 +99,7 @@ const templateData = {
               objectPosition='center'
       />,
       <Image className='z-0'
+              key={'3'}
               src={bg_shop.menu}
               placeholder="blur"
               blurDataURL={bg_placeholderImg}
@@ -104,6 +108,7 @@ const templateData = {
               objectPosition='center'
       />,
       <Image className='z-0'
+              key={'4'}
               src={bg_shop.nft}
               placeholder="blur"
               blurDataURL={bg_placeholderImg}
@@ -112,6 +117,7 @@ const templateData = {
               objectPosition='center'
       />,
       <Image className='z-0'
+              key={'5'}
               src={Diamond}
               placeholder="blur"
               blurDataURL={bg_placeholderImg}

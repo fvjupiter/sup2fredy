@@ -40,18 +40,20 @@ export default function HomeMenuTiles() {
     return <>
         <div className="relative w-full">
                 {navItems.map((item, index) => (
-                    <NavItem key={index} index={index} 
-                        href={item[0]} 
-                        title={item[1]} 
-                        content={item[6]}
-                        icon={item[2]}
-                        border={item[3]} 
-                        text={item[4]}
-                        bgImg={item[5]}
-                        ifClickedOpacity={index == isClicked && 'opacity-0'}
-                        ifClickedScale={index == isClicked ? 'scale-[2]' : 'scale-[1.08] group-hover:scale-[1]'}
-                        setisClicked={setisClicked}
-                    />
+                    <div key={index}>
+                        <NavItem index={index} 
+                            href={item[0]} 
+                            title={item[1]} 
+                            content={item[6]}
+                            icon={item[2]}
+                            border={item[3]} 
+                            text={item[4]}
+                            bgImg={item[5]}
+                            ifClickedOpacity={index == isClicked && 'opacity-0'}
+                            ifClickedScale={index == isClicked ? 'scale-[2]' : 'scale-[1.08] group-hover:scale-[1]'}
+                            setisClicked={setisClicked}
+                        />
+                    </div>
                 ))}
         </div>
     </>

@@ -53,16 +53,19 @@ export default function BottomBar() {
                     </div>
                 </Link>
                 {navItems.map((item, index) => (
-                    <NavItem key={index} index={index} 
-                        href={
-                            item[0] == asPath && param1 ? `${item[0].split('/').slice(0, -1).join('/')}` //goBack one
-                            : item[0] //dont go back
-                        }
-                        title={item[1]} 
-                        icon={item[2]}
-                        colors={item[3]} 
-                        ifClicked={item[0] == asPath || item[0] == goBackPath ? item[4] : 'bg-opacity-70 bg-black hover:shadow-none ' + item[5]} 
-                    />
+                    <div key={index}>
+                        <NavItem 
+                            index={index} 
+                            href={
+                                item[0] == asPath && param1 ? `${item[0].split('/').slice(0, -1).join('/')}` //goBack one
+                                : item[0] //dont go back
+                            }
+                            title={item[1]} 
+                            icon={item[2]}
+                            colors={item[3]} 
+                            ifClicked={item[0] == asPath || item[0] == goBackPath ? item[4] : 'bg-opacity-70 bg-black hover:shadow-none ' + item[5]} 
+                        />
+                    </div>
                 ))}
             </div>
             <div onClick={() => setisInfo(true)}
