@@ -19,16 +19,16 @@ export default function HomeMenuTiles() {
     const continueAt = useRecoilValue(continueAtStates)
 
     const navItems = [
-        [continueAt.writings, 'Writings', <Icon id={'writings'} size={70}/>, 'border-lime-400', 'text-lime-400', 
+        [continueAt.writings, 'Writings', <Icon key={'0'} id={'writings'} size={70}/>, 'border-lime-400', 'text-lime-400', 
             continueAt.writings.includes('poems') ? bg_writings.poems 
             : continueAt.writings.includes('notes') ? bg_writings.notes 
             : continueAt.writings.includes('stories') ? bg_writings.stories 
             : bg_writings.menu, 
         'Poems, Notes & Stories'],
-        [continueAt.music, 'Music', <Icon id={'music'} size={70}/>, 'border-orange-400', 'text-orange-400', bg_music.menu, 'Stream'],
-        [continueAt.software, 'Software', <Icon id={'software'} size={70}/>, 'border-pink-400', 'text-pink-400', bg_software.menu, 'Web-Apps / Games'],
-        [continueAt.about, 'About Me', <Icon id={'about'} size={70}/>, 'border-purple-400', 'text-purple-400', Fredy, 'Background & Contact'],
-        [continueAt.shop, 'Shop', <Icon id={'shop'} size={70}/>, 'border-cyan-400', 'text-cyan-400', 
+        [continueAt.music, 'Music', <Icon key={'1'} id={'music'} size={70}/>, 'border-orange-400', 'text-orange-400', bg_music.menu, 'Stream'],
+        [continueAt.software, 'Software', <Icon key={'2'} id={'software'} size={70}/>, 'border-pink-400', 'text-pink-400', bg_software.menu, 'Web-Apps / Games'],
+        [continueAt.about, 'About Me', <Icon key={'3'} id={'about'} size={70}/>, 'border-purple-400', 'text-purple-400', Fredy, 'Background & Contact'],
+        [continueAt.shop, 'Shop', <Icon key={'4'} id={'shop'} size={70}/>, 'border-cyan-400', 'text-cyan-400', 
             continueAt.shop.includes('web-service') ? bg_shop.web 
             : continueAt.shop.includes('art') ? bg_shop.art  
             : continueAt.shop.includes('nft') ? bg_shop.nft  
@@ -40,20 +40,18 @@ export default function HomeMenuTiles() {
     return <>
         <div className="relative w-full">
                 {navItems.map((item, index) => (
-                    <div key={index}>
-                        <NavItem index={index} 
-                            href={item[0]} 
-                            title={item[1]} 
-                            content={item[6]}
-                            icon={item[2]}
-                            border={item[3]} 
-                            text={item[4]}
-                            bgImg={item[5]}
-                            ifClickedOpacity={index == isClicked && 'opacity-0'}
-                            ifClickedScale={index == isClicked ? 'scale-[2]' : 'scale-[1.08] group-hover:scale-[1]'}
-                            setisClicked={setisClicked}
-                        />
-                    </div>
+                    <NavItem index={index} 
+                        href={item[0]} 
+                        title={item[1]} 
+                        content={item[6]}
+                        icon={item[2]}
+                        border={item[3]} 
+                        text={item[4]}
+                        bgImg={item[5]}
+                        ifClickedOpacity={index == isClicked && 'opacity-0'}
+                        ifClickedScale={index == isClicked ? 'scale-[2]' : 'scale-[1.08] group-hover:scale-[1]'}
+                        setisClicked={setisClicked}
+                    />
                 ))}
         </div>
     </>
