@@ -53,6 +53,10 @@ export default function Layout({ children }) {
 }
 
 const Page = ({ children }) => {
+    const router = useRouter()
+    const asPath = router.asPath
+    const param1 = asPath.split('/')[1]
+
     const top = useRef(null)
     const [scrollTop, setscrollTop] = useRecoilState(scrollTopState)
     const setisInfo = useSetRecoilState(isInfoState)
@@ -70,7 +74,7 @@ const Page = ({ children }) => {
                 overflow-scroll z-10`}
             >
             <ScrollToTop />
-            <div className='min-h-screen pt-[58px]'>{children}</div>
+            <div className={`min-h-screen ${(param1 == 'writings' || param1 == 'shop') && 'pt-[58px]'}`}>{children}</div>
             <Footer />
         </div>
     )

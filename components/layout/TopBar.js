@@ -60,20 +60,20 @@ export default function TopBar({ handleFullscreen }) {
     }
 
     return (
-        <div className={`z-20 fixed ${isShowMenu || isInfo ? 'top-0' : 'top-[-65px]'} transition-all duration-500 ease-in-out delay-200 left-0 w-screen flex justify-center`}>
-            <div className={`ring-gray-600 h-11 p-1 ring-2 rounded-full
+        <div className={`${param1 == 'writings' || param1 == 'shop' ? 'visible' : 'hidden'} z-20 fixed ${isShowMenu || isInfo ? 'top-0' : 'top-[-65px]'} transition-all duration-500 ease-in-out delay-200 left-0 w-screen flex justify-center`}>
+            <div className={`ring-gray-600 h-11 ring-2 rounded-full
                             flex items-center justify-between mx-2 mt-3 
-                            backdrop bg-opacity-30 bg-black  transition-all duration-300 max-w-full`}
+                            backdrop bg-opacity-30 bg-black  transition-all duration-300 max-w-full overflow-hidden`}
                 >
                 <Link href={'/'}>
-                    <div className='group flex items-center justify-center textShadow text-2xl font-bold px-3 py-0.5 cursor-pointer text-white'>
+                    <div className={`group flex items-center justify-center textShadow text-2xl font-bold px-3 py-0.5 cursor-pointer text-white ${(param1 == 'writings' || param1 == 'shop') && 'border-r-2'} sm:border-r-0 border-gray-600`}>
                         <div className={`sidebar-tooltip group-hover:scale-100 bottom-[-48px] origin-top`}>
                             Home
                         </div>
                         <span className='font-cursive'>S2F</span>
                     </div>
                 </Link>
-                <div className='border-r-2 border-l-2 border-gray-600 flex items-center justify-center px-1 mr-2'>
+                <div className='hidden sm:flex border-r-2 border-l-2 border-gray-600 items-center justify-center px-1 mr-2'>
                     <Toggle icon={isFullscreen ? <Icon id={'fullscreenExit'} size={20}/> : <Icon id={'fullscreen'} size={20}/>} tooltipTitle={`${isFullscreen ? 'exit' : ''} Fullscreen`} clickHandle={toggleFullscreen}/>
                     {/* <Toggle icon={<BsSun size={22}/>} /> */}
                 </div>
@@ -84,6 +84,7 @@ export default function TopBar({ handleFullscreen }) {
                             tooltipTitle={item[2]}
                             border={item[0] == asPath && item[3]}
                             isIcon={item[4]}
+                            lastItem={index == getNavItems().length-1}
                         />
                     ))}
                 </div>
@@ -92,9 +93,9 @@ export default function TopBar({ handleFullscreen }) {
     )
 }
 
-const NavItem = ({ index, title, href, border, isIcon, tooltipTitle }) => {
+const NavItem = ({ index, title, href, border, isIcon, tooltipTitle, lastItem }) => {
     return <Link href={href}>
-        <div className={`group ${!isIcon ? 'px-3.5 py-1.5' : 'mx-2'} flex items-center justify-center cursor-pointer text-center rounded-full whitespace-nowrap
+        <div className={`group ${!isIcon ? `px-3.5 py-1.5 ${lastItem && 'mr-1'}` : 'mx-2'} flex items-center justify-center cursor-pointer text-center rounded-full whitespace-nowrap
                 ${border ? border : 'button-hover-white'}`}
             >
             {isIcon && <div className={`sidebar-tooltip group-hover:scale-100 bottom-[-48px] origin-top`}>

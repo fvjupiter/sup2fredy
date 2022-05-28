@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { continueAtStates, isInfoState, isShowMenuState } from '../../lib/states'
+import { continueAtStates, isInfoState, isShowMenuState, screenState } from '../../lib/states'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import Link from 'next/link'
 import { Icon } from '../../lib/icons'
@@ -16,6 +16,7 @@ export default function BottomBar() {
     const param3 = asPath.split('/')[3]
 
     const [isInfo, setisInfo] = useRecoilState(isInfoState)
+    const screen = useRecoilValue(screenState)
     const isShowMenu = useRecoilValue(isShowMenuState)
     const [isDelay, setisDelay] = useState(true)
     useEffect(() => {
@@ -23,7 +24,7 @@ export default function BottomBar() {
         setTimeout(() => setisDelay(true), 300);
     }, [isInfo])
     
-    const isSmall = !isInfo && (isHome || param2 == 'mathgame')
+    const isSmall = !isInfo && (screen.width < 640 || isHome || param2 == 'mathgame')
     const continueAt = useRecoilValue(continueAtStates)
 
     const iconClassName = `${!isSmall ? 'scale-100' : 'scale-0'} transition-transform duration-300`
@@ -85,7 +86,8 @@ const NavItem = ({ index, href, title, icon, colors, ifClicked, setisClicked }) 
     const param2 = router.asPath.split('/')[2]
     const param3 = router.asPath.split('/')[3]
     const isHome = router.pathname.split('/')[1] == ''
-    const isSmall = !isInfo && (isHome || param2 == 'mathgame')//(router.asPath.split('/')[3] || isHome) && !isInfo
+    const screen = useRecoilValue(screenState)
+    const isSmall = !isInfo && (screen.width < 640 || isHome || param2 == 'mathgame')//(router.asPath.split('/')[3] || isHome) && !isInfo
     return <Link key={index} href={href}>
         <div onClick={() => setTimeout(() => setisInfo(false), 300)}
             className={`sidebar-icon group ${colors} active:shadow-inner-xl active:duration-100 border-2 ${ifClicked} ${isInfo ? 'h-12 w-12 p-1.5' : isSmall ? 'h-3 w-12 p-0' : 'h-12 w-12 p-1.5'}`}>
