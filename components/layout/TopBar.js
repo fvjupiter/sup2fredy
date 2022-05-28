@@ -79,14 +79,14 @@ export default function TopBar({ handleFullscreen }) {
                 </div>
                 <div className='flex overflow-x-scroll'>
                     {getNavItems() && getNavItems().map((item, index) => (
-                        <div key={index}>
-                            <NavItem key={index} index={index} href={item[0]} 
+                        // <div key={index}>
+                            <NavItem index={index} href={item[0]} 
                                 title={item[1]} 
                                 tooltipTitle={item[2]}
                                 border={item[0] == asPath && item[3]}
                                 isIcon={item[4]}
                             />
-                        </div>
+                        // </div> 
                     ))}
                 </div>
             </div>
@@ -95,16 +95,18 @@ export default function TopBar({ handleFullscreen }) {
 }
 
 const NavItem = ({ index, title, href, border, isIcon, tooltipTitle }) => {
-    return <Link href={href}>
-        <div className={`group ${!isIcon ? 'px-3.5 py-1.5' : 'mx-2'} flex items-center justify-center cursor-pointer text-center rounded-full whitespace-nowrap
-                 ${border ? border : 'button-hover-white'}`}
-            >
-            {isIcon && <div className={`sidebar-tooltip group-hover:scale-100 bottom-[-48px] origin-top`}>
-                {tooltipTitle}
-            </div>}
-            {title}
-        </div>
-    </Link>
+    return <div key={`${index}${title}`} className='center'>
+        <Link href={href}>
+            <div className={`group ${!isIcon ? 'px-3.5 py-1.5' : 'mx-2'} flex items-center justify-center cursor-pointer text-center rounded-full whitespace-nowrap
+                    ${border ? border : 'button-hover-white'}`}
+                >
+                {isIcon && <div className={`sidebar-tooltip group-hover:scale-100 bottom-[-48px] origin-top`}>
+                    {tooltipTitle}
+                </div>}
+                {title}
+            </div>
+        </Link>
+    </div>
 }
 
 const Toggle = ({ icon, tooltipTitle, clickHandle }) => (

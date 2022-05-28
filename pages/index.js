@@ -9,8 +9,8 @@ export default function Home() {
   const [displayMagic, setdisplayMagic] = useState(true)
   const [isLandingPage, setisLandingPage] = useRecoilState(isLandingPageState)
   const screen = useRecoilValue(screenState)
-  console.log(screen)
   useEffect(() => setisShowMenu(isLandingPage ? false : true), [isLandingPage])
+  
   const introText = screen.width <= 640 ? 
     [`Hi Stranger & welcome to`,
       `SUP2FREDY!`,

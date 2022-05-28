@@ -53,19 +53,17 @@ export default function BottomBar() {
                     </div>
                 </Link>
                 {navItems.map((item, index) => (
-                    <div key={index}>
-                        <NavItem 
-                            index={index} 
-                            href={
-                                item[0] == asPath && param1 ? `${item[0].split('/').slice(0, -1).join('/')}` //goBack one
-                                : item[0] //dont go back
-                            }
-                            title={item[1]} 
-                            icon={item[2]}
-                            colors={item[3]} 
-                            ifClicked={item[0] == asPath || item[0] == goBackPath ? item[4] : 'bg-opacity-70 bg-black hover:shadow-none ' + item[5]} 
-                        />
-                    </div>
+                    <NavItem 
+                        index={index} 
+                        href={
+                            item[0] == asPath && param1 ? `${item[0].split('/').slice(0, -1).join('/')}` //goBack one
+                            : item[0] //dont go back
+                        }
+                        title={item[1]} 
+                        icon={item[2]}
+                        colors={item[3]} 
+                        ifClicked={item[0] == asPath || item[0] == goBackPath ? item[4] : 'bg-opacity-70 bg-black hover:shadow-none ' + item[5]} 
+                    />
                 ))}
             </div>
             <div onClick={() => setisInfo(true)}
@@ -87,13 +85,15 @@ const NavItem = ({ index, href, title, icon, colors, ifClicked, setisClicked }) 
     const param3 = router.asPath.split('/')[3]
     const isHome = router.pathname.split('/')[1] == ''
     const isSmall = !isInfo && (isHome || param2 == 'mathgame')//(router.asPath.split('/')[3] || isHome) && !isInfo
-    return <Link href={href}>
-        <div onClick={() => setTimeout(() => setisInfo(false), 300)}
-            className={`sidebar-icon group ${colors} active:shadow-inner-xl active:duration-100 border-2 ${ifClicked} ${isInfo ? 'h-12 w-12 p-1.5' : isSmall ? 'h-3 w-12 p-0' : 'h-12 w-12 p-1.5'}`}>
-            <div className={`sidebar-tooltip group-hover:scale-100 ${isSmall && 'bottom-3'} ${isInfo && 'scale-100 bg-transparent shadow-none bottom-12 duration-300'}`}>
-                {title}
+    return <div key={`${index}${title}`} className='center'>
+        <Link href={href}>
+            <div onClick={() => setTimeout(() => setisInfo(false), 300)}
+                className={`sidebar-icon group ${colors} active:shadow-inner-xl active:duration-100 border-2 ${ifClicked} ${isInfo ? 'h-12 w-12 p-1.5' : isSmall ? 'h-3 w-12 p-0' : 'h-12 w-12 p-1.5'}`}>
+                <div className={`sidebar-tooltip group-hover:scale-100 ${isSmall && 'bottom-3'} ${isInfo && 'scale-100 bg-transparent shadow-none bottom-12 duration-300'}`}>
+                    {title}
+                </div>
+                {icon}
             </div>
-            {icon}
-        </div>
-    </Link>
+        </Link>
+    </div>
 }
