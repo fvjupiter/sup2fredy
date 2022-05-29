@@ -11,7 +11,7 @@ export default function Poem({ poem, poemSlugList }) {
         poems: poemSlugList
     }), [])
 
-    return <>
+    return <div className='mb-20'>
         <ContentCard 
             title={poem.fields.title} 
             date={poem.fields.dateTitle} 
@@ -21,7 +21,7 @@ export default function Poem({ poem, poemSlugList }) {
             bgColor={'bg-black'}
             textOrientation='text-center'
         />
-    </>
+    </div>
 } 
 
 const client = createClient({

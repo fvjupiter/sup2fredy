@@ -45,11 +45,11 @@ export default function Home() {
         <MagicText lineArr={introText}>
           <div onClick={() => { setTimeout(() => setdisplayMagic(false), 1000); setisLandingPage(false) }} 
             className={`
-              text-2xl inset-x-1/2 absolute -ml-28 z-40 
-              rounded-3xl h-16 w-56 duration-300
-              hover:mb-1 active:mb-0 mb-0 -bottom-20 hover:text-white text-gray-500
+              text-xl inset-x-1/2 absolute -ml-20 z-40 
+              rounded-3xl h-12 w-40 duration-300
+              hover:mb-1 active:mb-0 mb-0 -bottom-20 hover:text-white text-gray-700
               hover:border-white font-serif textShadow hover:bg-opacity-0 bg-black 
-              bg-opacity-90 border-4 border-gray-600 flex items-center justify-center 
+              bg-opacity-90 border-4 border-gray-700 flex items-center justify-center 
               cursor-pointer`}>
                   <div>continue</div>
           </div>

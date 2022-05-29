@@ -2,8 +2,10 @@ import React, {useState, useEffect } from 'react'
 import styles from '../styles/MagicText.module.css'
 
 export default function MagicText({ lineArr, children }) {
+    const [showChildren, setshowChildren] = useState(false)
     const [isAni, setisAni] = useState(true)
     useEffect(() => {
+      setshowChildren(true)
       const timeO = setTimeout(() => setisAni(false) , lineArr.length * 1500)
       return () => clearTimeout(timeO)
     }, [])
@@ -40,8 +42,8 @@ export default function MagicText({ lineArr, children }) {
       <div className={`whitespace-pre-wrap z-10`}>
         {getLines(lineArr)}
         {children && <div 
-          className={`${!isAni ? 'opacity-100 w-56 scale-100' : 'opacity-0 w-full scale-0'} 
-            duration-1000 ease-in-out mx-auto hover:opacity-100`}
+          className={`${showChildren ? 'opacity-100 w-56 scale-100' : 'opacity-0'} 
+            duration-[5000ms] ease-in-out mx-auto hover:opacity-100`}
           >{children}
         </div>}
       </div>

@@ -37,11 +37,11 @@ export default function BottomBar() {
     ]
 
     return <>
-        <div className={`z-20 fixed ${isShowMenu || isInfo ? 'bottom-0' : 'bottom-[-85px]'} ${isDelay && 'transition-all duration-500 ease-in-out delay-200'} w-min inset-x-2/4 ${!isInfo ? 'ml-[-144px]' : 'ml-[-170px]'} flex justify-center transition-all duration-300`}
+        <div className={`z-20 fixed ${isShowMenu || isInfo ? 'bottom-0' : 'bottom-[-85px]'} ${isDelay && 'transition-all duration-500 ease-in-out delay-200'} w-min inset-x-2/4 ${!isInfo ? 'ml-[-144px]' : 'ml-[-186px]'} flex justify-center transition-all duration-300`}
             >
-            <div className={`${isInfo ? 'h-[132px] w-[340px] ring-white shadow-4xl p-2' 
-                            : isSmall ? 'h-6 w-72 p-0' 
-                            : 'h-16 w-72 p-1'}
+            <div className={`${isInfo ? 'h-[132px] w-[370px] ring-white shadow-4xl p-2' 
+                            : isSmall ? 'h-5 w-72 p-1' 
+                            : 'h-16 w-72 p-2'}
                             mb-3 transition-all duration-300
                             rounded-2xl flex items-end justify-between 
                             ring-2 ring-gray-600 backdrop bg-opacity-30 bg-black`}
@@ -69,7 +69,7 @@ export default function BottomBar() {
                 ))}
             </div>
             <div onClick={() => setisInfo(true)}
-                className={`p-2 absolute cursor-pointer ${isInfo && 'opacity-0 scale-0'} ${!isSmall ? 'right-[-40px] bottom-6' : 'right-[-36px] bottom-[4px]'} hover:text-white text-gray-200 transition-all duration-200`}>
+                className={`p-2 absolute cursor-pointer ${isInfo && 'opacity-0 scale-0'} ${!isSmall ? 'right-[-40px] bottom-6' : 'right-[-40px] bottom-[3px]'} hover:text-white text-gray-200 transition-all duration-200`}>
                 <Icon id='info' classN='ring-gray-600 rounded-full backdrop bg-black bg-opacity-30' size={22}/>
             </div>
             <div onClick={() => setisInfo(false)}
@@ -89,14 +89,12 @@ const NavItem = ({ index, href, title, icon, colors, ifClicked, setisClicked }) 
     const screen = useRecoilValue(screenState)
     const isSmall = !isInfo && (screen.width < 640 || isHome || param2 == 'mathgame')//(router.asPath.split('/')[3] || isHome) && !isInfo
     return <Link key={index} href={href}>
-        <div className='p-1'>
         <div onClick={() => setTimeout(() => setisInfo(false), 300)}
-            className={`sidebar-icon group ${colors} active:shadow-inner-xl active:duration-100 border-2 ${ifClicked} ${isInfo ? 'h-12 w-12 p-1.5' : isSmall ? 'h-4 w-12 p-0' : 'h-12 w-12 p-1.5'}`}>
+            className={`sidebar-icon group ${colors} active:shadow-inner-xl active:duration-100 border-2 ${ifClicked} ${isInfo ? 'h-12 w-12 p-1.5' : isSmall ? 'h-3 w-12 p-0' : 'h-12 w-12 p-1.5'}`}>
             <div className={`sidebar-tooltip group-hover:scale-100 ${isSmall && 'bottom-3'} ${isInfo && 'scale-100 bg-transparent shadow-none bottom-12 duration-300'}`}>
                 {title}
             </div>
             {icon}
-        </div>
         </div>
     </Link>
 }
