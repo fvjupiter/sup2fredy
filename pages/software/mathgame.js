@@ -102,7 +102,7 @@ export default function Mathgame() {
       return <>
         <div className='p-4 text-xl'>
         <div className='text-2xl mb-4'>Result</div>
-          {line('Mode', `${mathgameData.mode} ${mathgameData.mode == 'time' && `(${parseInt(Math.floor(mathgameData.playtime / 60)) < 10 && '0'}${parseInt(Math.floor(mathgameData.playtime / 60))}:${mathgameData.mode == 'time' && parseInt(mathgameData.playtime % 60) < 10 && '0'}${parseInt(mathgameData.playtime % 60)})`}`)}
+          {line('Mode', `${mathgameData.mode} ${mathgameData.mode == 'time' && `(${parseInt(Math.floor(mathgameData.playtime / 60)) < 10 ? '0' : ''}${parseInt(Math.floor(mathgameData.playtime / 60))}:${mathgameData.mode == 'time' && parseInt(mathgameData.playtime % 60) < 10 ? '0' : ''}${parseInt(mathgameData.playtime % 60)})`}`)}
           {line('Level', mathgameData.difficulty)}
           {line('Time Pressure', mathgameData.calculatedTimePressure + 's')}
           {line('Total Answers', rightAnswers + wrongAnswers)}
@@ -147,14 +147,45 @@ export default function Mathgame() {
             default: break;
           }
           break;
-        case 2: randomSyntax = Math.floor(Math.random()*1)
+        case 2: randomSyntax = Math.floor(Math.random()*4)
           switch (randomSyntax) {
             case 0: setexercise(`${isNeg ? '- ' +  a10 : a10} * ${b20} ${isNeg2 ? '- ' + A10 : '+ ' + A10}`)
               newResult = (isNeg ? a10 * -1 : a10) * b20 + (isNeg2 ? A10 * -1 : A10); break;
+            case 1: setexercise(`${isNeg ? '- ' +  c50 : c50} ${isNeg2 ? '- ' + d100 : '+ ' + d100}`)
+              newResult = (isNeg ? c50 * -1 : c50) + (isNeg2 ? d100 * -1 : d100); break;
+            case 2: setexercise(`${isNeg ? '- ' +  d100 : d100} ${isNeg2 ? '- ' + D100 : '+ ' + D100}`)
+              newResult = (isNeg ? d100 * -1 : d100) + (isNeg2 ? D100 * -1 : D100); break;
+            case 3: setexercise(`${isNeg ? '- ' +  d100 : d100} * ${isNeg2 ? '- ' + a10 : a10}`)
+              newResult = (isNeg ? d100 * -1 : d100) * (isNeg2 ? a10 * -1 : a10); break;
             default: break;
           }
           break;
-      
+        case 3: randomSyntax = Math.floor(Math.random()*4)
+          switch (randomSyntax) {
+            case 0: setexercise(`${isNeg ? '- ' +  b20 : b20} * ${isNeg2 ? '- ' + B20 : B20}`)
+              newResult = (isNeg ? b20 * -1 : b20) * (isNeg2 ? B20 * -1 : B20); break;
+            case 1: setexercise(`${isNeg ? '- ' +  c50 : c50} * ${isNeg2 ? '- ' + b20 : b20}`)
+              newResult = (isNeg ? c50 * -1 : c50) * (isNeg2 ? b20 * -1 : b20); break;
+            case 2: setexercise(`${isNeg ? '- ' +  e500 : e500} ${isNeg2 ? '- ' + E500 : '+ ' + E500}`)
+              newResult = (isNeg ? e500 * -1 : e500) + (isNeg2 ? E500 * -1 : E500); break;
+            case 3: setexercise(`${isNeg ? '- ' +  a10 : a10} * ${b20} ${isNeg2 ? '- ' + e500 : '+ ' + e500}`)
+              newResult = (isNeg ? a10 * -1 : a10) * b20 + (isNeg2 ? e500 * -1 : e500); break;
+            default: break;
+          }
+          break;
+        case 4: randomSyntax = Math.floor(Math.random()*4)
+          switch (randomSyntax) {
+            case 0: setexercise(`${isNeg ? '- ' +  c50 : c50} * ${isNeg2 ? '- ' + d100 : d100}`)
+              newResult = (isNeg ? c50 * -1 : c50) * (isNeg2 ? d100 * -1 : d100); break;
+            case 1: setexercise(`${isNeg ? '- ' +  d100 : d100} * ${isNeg2 ? '- ' + D100 : D100}`)
+              newResult = (isNeg ? d100 * -1 : d100) * (isNeg2 ? D100 * -1 : D100); break;
+            case 2: setexercise(`${isNeg ? '- ' +  e500 : e500} ${isNeg2 ? '- ' + E500 : '+ ' + E500} * ${isNeg2 ? '- ' + a10 : a10}`)
+              newResult = (isNeg ? e500 * -1 : e500) + (isNeg2 ? E500 * -1 : E500) * (isNeg2 ? a10 * -1 : a10); break;
+            case 3: setexercise(`${isNeg ? '- ' +  B20 : B20} * ${b20} ${isNeg2 ? '- ' + e500 : '+ ' + e500}`)
+              newResult = (isNeg ? B20 * -1 : B20) * b20 + (isNeg2 ? e500 * -1 : e500); break;
+            default: break;
+          }
+          break;
         default:
           break;
       }
@@ -235,10 +266,12 @@ export default function Mathgame() {
 
     // useEffect(() => calcPoints(), [mathgameData])
   return <>
-    <div className={`${answerBackground} absolute left-1/2 ml-[-187.5px] shadow-answers duration-300 bg-opacity-40 backdrop cursor-default font-mono text-white text-center rounded-3xl my-2 p-0 pt-5 mx-auto whitespace-pre-line 
-      w-[375px] ${isMenu ? 'h-[562px]' : 'h-[495px]'} sm:mt-20 mt-2
-      text-sm md:text-base`}>
-        <h1 className='textShadow text-5xl text-center text-white font-cursive mb-3'>Mathgame</h1>
+    <div className={`${answerBackground} 
+      absolute left-1/2 -ml-[175px] sm:ml-[-187.5px] w-[350px] sm:w-[375px] ${isMenu ? 'h-[526px] sm:h-[562px]' : 'h-[460px] sm:h-[495px]'} sm:mt-10 mt-2
+      shadow-answers duration-300 bg-opacity-40 backdrop cursor-default
+      rounded-3xl my-2 p-0 pt-3 sm:pt-5 mx-auto whitespace-pre-line 
+      font-mono text-white text-center text-sm md:text-base`}>
+        <h1 className='textShadow text-3xl sm:text-5xl text-center text-white font-cursive mb-1 sm:mb-3'>Mathgame</h1>
       {isMenu 
         ? <>
           <InputLinesMenu />
@@ -274,6 +307,7 @@ export default function Mathgame() {
       <div onClick={() => setisMenu(!isMenu)}
           className='w-32 relative bottom-0 mt-2 left-1/2 -ml-16 mathgame-button border-2 bg-indigo-800 bg-opacity-20 hover:bg-white duration-300 hover:text-indigo-800'>{isMenu ? 'Start' : 'Menu'}</div>
     </div>
+    {/* {result} */}
   </>
 }
 

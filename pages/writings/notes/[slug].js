@@ -19,7 +19,7 @@ export default function Note({ note, noteSlugList }) {
             markdownContent={note.fields.content} 
             ringColor={'ring-emerald-400'} 
             bgColor={'bg-black'}
-            textOrientation='text-center'
+            textOrientation='text-justify'
         />
     </>
 }

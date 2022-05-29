@@ -48,11 +48,11 @@ export default function TopBar({ handleFullscreen }) {
                     // ['/software', '', '', 'bg-pink-400 text-gray-900']
                 ] : [[goBackPath, <Icon key={'4'} id={'software'} size={28}/>, 'Menu', '', true]]
             case 'shop': return [
-                    ['/shop', <Icon key={'5'} id={'shop'} size={28}/>, 'Menu', 'text-cyan-400', true],
-                    ['/shop/web-service', 'Web-Service', '', 'bg-cyan-400 text-gray-900'],
-                    ['/shop/art', 'Art', '', 'bg-cyan-400 text-gray-900'],
-                    ['/shop/nft', 'NFT', '', 'bg-cyan-400 text-gray-900'],
-                    ['/shop/merch', 'Merch', '', 'bg-cyan-400 text-gray-900']
+                    // ['/shop', <Icon key={'5'} id={'shop'} size={28}/>, 'Menu', 'text-cyan-400', true],
+                    // ['/shop/web-service', 'Web-Service', '', 'bg-cyan-400 text-gray-900'],
+                    // ['/shop/art', 'Art', '', 'bg-cyan-400 text-gray-900'],
+                    // ['/shop/nft', 'NFT', '', 'bg-cyan-400 text-gray-900'],
+                    // ['/shop/merch', 'Merch', '', 'bg-cyan-400 text-gray-900']
                 ]
             
             default: null;
@@ -60,7 +60,7 @@ export default function TopBar({ handleFullscreen }) {
     }
 
     return (
-        <div className={`${param1 == 'writings' || param1 == 'shop' ? 'visible' : 'hidden'} z-20 fixed ${isShowMenu || isInfo ? 'top-0' : 'top-[-65px]'} transition-all duration-500 ease-in-out delay-200 left-0 w-screen flex justify-center`}>
+        <div className={`${param1 == 'writings' ? 'flex' : 'hidden sm:flex'} z-20 fixed ${isShowMenu || isInfo ? 'top-0' : 'top-[-65px]'} transition-all duration-500 ease-in-out delay-200 left-0 w-screen justify-center`}>
             <div className={`ring-gray-600 h-11 ring-2 rounded-lg sm:rounded-full
                             flex items-center justify-between mx-2 mt-3 
                             backdrop bg-opacity-30 bg-black  transition-all duration-300 max-w-full`}

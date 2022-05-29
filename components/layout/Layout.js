@@ -74,7 +74,7 @@ const Page = ({ children }) => {
                 overflow-scroll z-10`}
             >
             <ScrollToTop />
-            <div className={`min-h-screen ${(param1 == 'writings' || param1 == 'shop') && 'pt-[58px]'}`}>{children}</div>
+            <div className={`min-h-screen sm:pt-[58px] ${(param1 == 'writings') && 'pt-[58px]'}`}>{children}</div>
             <Footer />
         </div>
     )

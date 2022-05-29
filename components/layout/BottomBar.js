@@ -92,7 +92,7 @@ const NavItem = ({ index, href, title, icon, colors, ifClicked, setisClicked }) 
         <div className='p-1'>
         <div onClick={() => setTimeout(() => setisInfo(false), 300)}
             className={`sidebar-icon group ${colors} active:shadow-inner-xl active:duration-100 border-2 ${ifClicked} ${isInfo ? 'h-12 w-12 p-1.5' : isSmall ? 'h-4 w-12 p-0' : 'h-12 w-12 p-1.5'}`}>
-            <div className={`sidebar-tooltip group-hover:scale-100 ${isSmall && 'bottom-3'} ${isInfo && 'scale-100 bg-transparent shadow-none bottom-12 duration-300'}`}>
+            <div className={`sidebar-tooltip group-hover:scale-100 ${isSmall && 'bottom-4'} ${isInfo && 'scale-100 bg-transparent shadow-none bottom-12 duration-300'}`}>
                 {title}
             </div>
             {icon}
