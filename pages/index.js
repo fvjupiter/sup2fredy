@@ -65,7 +65,7 @@ export default function Home() {
       <h1 className='text-4xl sm:text-5xl xl:text-6xl font-cursive textShadow-lg text-white font-extrabold mx-auto w-max my-3 sm:my-5'>SUP2FREDY</h1>
       <HomeMenuTiles />
       <div className='mb-20 center px-4'>
-        <div className='text-white text-sm backdrop bg-opacity-60 bg-black w-fit p-1'>Click 'add to Homescreen' in your Web-Browser to install this Blog as an App (PWA) on your phone.</div>
+        <div className='text-white text-sm backdrop bg-opacity-60 bg-black w-fit p-1'>You can click &apos;add to Homescreen&apos; in your Web-Browser to install this Blog as an App (PWA) on your phone.</div>
       </div>
       {/* <ul className='font-extralight text-white text-sm backdrop bg-opacity-60 bg-black my-4 mx-auto w-full sm:w-11/12 p-2 px-3 rounded-xl ring-2 ring-gray-600'>
         <li>All content as well as the Website itself is made by Frederik Schoof.</li>
