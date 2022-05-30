@@ -13,6 +13,7 @@
     "contentful": "^9.1.29",
     "framer-motion": "^6.3.4",
     "next": "12.1.6",
+    "next-pwa": "^5.5.2",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-full-screen": "^1.1.0",

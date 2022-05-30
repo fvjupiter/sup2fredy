@@ -24,7 +24,7 @@ export default function BottomBar() {
         setTimeout(() => setisDelay(true), 300);
     }, [isInfo])
     
-    const isSmall = !isInfo && (screen.width < 640 || isHome || param2 == 'mathgame')
+    const isSmall = !isInfo && !isHome && screen.width < 640
     const continueAt = useRecoilValue(continueAtStates)
 
     const iconClassName = `${!isSmall ? 'scale-100' : 'scale-0'} transition-transform duration-300`
@@ -69,8 +69,10 @@ export default function BottomBar() {
                 ))}
             </div>
             <div onClick={() => setisInfo(true)}
-                className={`p-2 absolute cursor-pointer ${isInfo && 'opacity-0 scale-0'} ${!isSmall ? 'right-[-40px] bottom-6' : 'right-[-36px] bottom-[4px]'} hover:text-white text-gray-200 transition-all duration-200`}>
-                <Icon id='info' classN='ring-gray-600 rounded-full backdrop bg-black bg-opacity-30' size={22}/>
+                className={`p-2 absolute cursor-pointer ${isInfo && 'opacity-0 scale-0'} ${!isSmall ? 'right-[-38px] sm:right-[-44px] bottom-5' : 'right-[-38px] bottom-[4px]'} hover:text-white text-gray-200 transition-all duration-200`}>
+                <div className='ring-gray-600 rounded-lg backdrop bg-black bg-opacity-30 h-6 w-6 sm:h-7 sm:w-7 center'>
+                    <Icon id='menu' classN='' size={22}/>
+                </div>
             </div>
             <div onClick={() => setisInfo(false)}
                 className={`p-2 absolute cursor-pointer ${!isInfo && 'opacity-0 scale-0'} ${!isSmall ? 'right-[0px] top-0' : 'right-[-40px] bottom-[3px]'} hover:text-white text-gray-300 transition-all duration-200`}>
@@ -87,7 +89,7 @@ const NavItem = ({ index, href, title, icon, colors, ifClicked, setisClicked }) 
     const param3 = router.asPath.split('/')[3]
     const isHome = router.pathname.split('/')[1] == ''
     const screen = useRecoilValue(screenState)
-    const isSmall = !isInfo && (screen.width < 640 || isHome || param2 == 'mathgame')//(router.asPath.split('/')[3] || isHome) && !isInfo
+    const isSmall = !isInfo && !isHome && screen.width < 640
     return <Link key={index} href={href}>
         <div className='p-1'>
         <div onClick={() => setTimeout(() => setisInfo(false), 300)}
