@@ -27,19 +27,29 @@ export default function Story({ story,storySlugList }) {
     };
 
     // dangerouslySetInnerHTML={{ __html: content.split('\n').join('\n\n') }} 
-    return <>
-        <PageTitle title={story.fields.title}/>
+    return <div className=''>
+        {/* <PageTitle title={story.fields.title}/>
         <div
-            className={`lg:w-[1010px] w-11/12 mx-auto sm:w-[620px] md:w-[748px] 
+            className={`lg:w-[1010px] mx-auto sm:w-[620px] md:w-[748px] 
                 px-4 py-2 sm:px-7 sm:py-5 md:px-8 md:py-6 lg:py-8 lg:px-12 mb-20
                 text-sm sm:text-base md:text-lg text-justify lg:leading-10
                 mt-4 whitespace-pre-line font-light
                 bg-black bg-opacity-70 text-white rounded-3xl
-                border-4 border-white ring-2 ring-green-400 
+                sm:border-4 border border-green-400 ring-4
             `}>
                 {documentToReactComponents(story.fields.content, richText_Options)}
-        </div>
-    </>
+        </div> */}
+        <ContentCard 
+            title={story.fields.title} 
+            date={story.fields.dateTitle} 
+            intro={story.fields.intro} 
+            markdownContent={story.fields.content} 
+            borderColor={'border-green-400'} 
+            lgWidth={`lg:w-[1000px]`}
+            bgColor={'bg-black'}
+            textOrientation='text-justify'
+        />
+    </div>
 }
 
 const client = createClient({

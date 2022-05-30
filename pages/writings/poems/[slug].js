@@ -17,7 +17,7 @@ export default function Poem({ poem, poemSlugList }) {
             date={poem.fields.dateTitle} 
             intro={poem.fields.intro} 
             markdownContent={poem.fields.content} 
-            ringColor={'ring-lime-400'} 
+            borderColor={'border-lime-400 ring-black/50'} 
             bgColor={'bg-black'}
             textOrientation='text-center'
         />

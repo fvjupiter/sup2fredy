@@ -17,7 +17,7 @@ export default function Note({ note, noteSlugList }) {
             date={note.fields.dateTitle} 
             intro={note.fields.intro} 
             markdownContent={note.fields.content} 
-            ringColor={'ring-emerald-400'} 
+            borderColor={'border-emerald-400'} 
             bgColor={'bg-black'}
             textOrientation='text-justify'
         />
