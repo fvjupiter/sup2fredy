@@ -24,29 +24,31 @@ export default function TopBar({ handleFullscreen }) {
     const isInfo = useRecoilValue(isInfoState)
     const slugList = useRecoilValue(slugListState)
 
-    const goBack = icon => {
+    const goBack = (icon, icon2) => {
         const indexSlug = slugList[param2].indexOf(param3)
+        const randomPath = `${slugList[param2][Math.floor(Math.random() * slugList[param2].length)]}`
         return [
+            [goBackPath, icon, `all ${param2}`, '', true],
             [`/${param1}/${param2}/${indexSlug > 0 ? slugList[param2][indexSlug -1] : slugList[param2][slugList[param2].length-1]}`, <Icon key={'0'} id={'arrowLeft'} size={24} classN='mt-0.5'/>, 'previous', '', true],
-            [goBackPath, icon, 'back', '', true],
-            [`/${param1}/${param2}/${indexSlug < slugList[param2].length-1 ? slugList[param2][indexSlug +1] : slugList[param2][0]}`, <Icon key={'1'} id={'arrowRight'} size={24} classN='mt-0.5'/>, 'next', '', true]
+            [randomPath, icon2, 'random', '', true],
+            [`/${param1}/${param2}/${indexSlug < slugList[param2].length-1 ? slugList[param2][indexSlug +1] : slugList[param2][0]}`, <Icon key={'1'} id={'arrowRight'} size={24} classN='mt-0.5'/>, 'next', '', true],
         ]
     }
     const getNavItems = () => {
         switch (param1) {
             case 'writings': return !param3 ? [
-                    ['/writings', <Icon key={'2'} id={'writings'} size={28}/>, 'Menu', 'text-lime-400', true],
+                    ['/writings', <Icon key={'2'} id={'writings'} size={28}/>, 'all writings', 'text-lime-400', true],
                     ['/writings/poems', 'Poems', '', 'bg-lime-400 text-gray-900'],
                     ['/writings/notes', 'Notes', '', 'bg-emerald-400 text-gray-900'],
                     ['/writings/stories', 'Stories', '', 'bg-green-400 text-gray-900']
-                ] : goBack(<Icon key={'3'} id={'writings'} size={28}/>)
+                ] : goBack(<Icon key={'3'} id={'writings'} size={28}/>, <Icon key={'3'} id={'dice'} size={30}/>)
             // case 'music': return !param3 ? [
             //         ['/music/singles', 'Singles', '', 'bg-orange-400 text-gray-900'],
             //         ['/music/albums', 'Albums', '', 'bg-yellow-400 text-gray-900']
             //     ] : goBack(<Icon id={'music'} size={22}/>)
             case 'software': return !param2 ? [
                     // ['/software', '', '', 'bg-pink-400 text-gray-900']
-                ] : [[goBackPath, <Icon key={'4'} id={'software'} size={28}/>, 'Menu', '', true]]
+                ] : [[goBackPath, <Icon key={'4'} id={'software'} size={28}/>, 'all software', '', true]]
             case 'shop': return [
                     // ['/shop', <Icon key={'5'} id={'shop'} size={28}/>, 'Menu', 'text-cyan-400', true],
                     // ['/shop/web-service', 'Web-Service', '', 'bg-cyan-400 text-gray-900'],
@@ -75,7 +77,6 @@ export default function TopBar({ handleFullscreen }) {
                 </Link>
                 <div className='hidden sm:flex border-r-2 border-l-2 border-gray-600 items-center justify-center px-1 mr-2'>
                     <Toggle icon={isFullscreen ? <Icon id={'fullscreenExit'} size={24}/> : <Icon id={'fullscreen'} size={24}/>} tooltipTitle={`${isFullscreen ? 'exit' : ''} Fullscreen`} clickHandle={toggleFullscreen}/>
-                    {/* <Toggle icon={<BsSun size={22}/>} /> */}
                 </div>
                 <div className='flex overflow-x-scroll'>
                     {getNavItems() && getNavItems().map((item, index) => (
