@@ -26,8 +26,8 @@ export default function BottomBar() {
         setTimeout(() => setisDelay(true), 300);
     }, [isInfo])
     
-    const isSmall = infoWasOpened && !isInfo && !isHome && screen.width < 640
-    // const isSmall = false
+    // const isSmall = infoWasOpened && !isInfo && !isHome && screen.width < 640
+    const isSmall = false
 
     const continueAt = useRecoilValue(continueAtStates)
 
@@ -94,8 +94,8 @@ const NavItem = ({ index, href, title, icon, colors, ifClicked, infoWasOpened })
     const param3 = router.asPath.split('/')[3]
     const isHome = router.pathname.split('/')[1] == ''
     const screen = useRecoilValue(screenState)
-    const isSmall = infoWasOpened && !isInfo && !isHome && screen.width < 640
-    // const isSmall = false
+    // const isSmall = infoWasOpened && !isInfo && !isHome && screen.width < 640
+    const isSmall = false
 
     return <Link key={index} href={href}>
         <div className='p-1'>
