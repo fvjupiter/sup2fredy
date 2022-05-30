@@ -13,6 +13,7 @@ export default function Notes({ notes, noteSlugList }) {
 
     return <>
         <PreviewCards
+            isRandom
             title='Notes'
             data={notes}
             folder={'notes'}

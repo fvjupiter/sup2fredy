@@ -13,6 +13,7 @@ export default function Stories({ stories, storySlugList }) {
 
     return <>
         <PreviewCards
+            isRandom
             title='stories'
             data={stories}
             folder={'stories'}

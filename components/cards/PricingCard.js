@@ -6,7 +6,7 @@ export default function PricingCard({ data, index, cardId, setCardId, priceData,
     useEffect(() => setisCardInfo(false), [cardId])
     return <>
         <div onClick={() => setCardId(index)}
-            className={`${cardId == index ? `scale-105 bg-white ring-cyan-300 ${isCardInfo ? 'border-cyan-200' : 'border-white'}  shadow-inner-xl shadow-5xl text-black`
+            className={`${cardId == index ? `scale-105 bg-white ring-cyan-300 ${isCardInfo ? 'border-cyan-200' : 'border-white'} shadow-5xl text-black`
                 : `scale-100 ring-gray-600 hover:border-white hover:ring-white hover:text-white text-gray-200 hover:opacity-100 opacity-80
                 hover:bg-opacity-50 bg-black 
                 hover:shadow-none shadow-4xl border-black cursor-pointer`}

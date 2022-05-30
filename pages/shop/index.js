@@ -10,13 +10,14 @@ export default function Shop() {
     return <>
         <PageTitle title={'Shop'}/>
         {/* <MenuCards data={data} /> */}
-
-        <div onClick={() => setid(0)} onMouseLeave={() => setid(-1)} className={`lg:w-10/12 xl:w-8/12 w-full mx-auto bg-white`}>
-            <DirectLinkCard index={0} href={data[0].href} isClicked={id == 0} title={data[0].title} img={data[0].img} ringHover={data[0].ringHover}>
-                <ul style={{ listStyleType: 'circle'}} className='text-white'>
-                    {data[0].childrenLi}
-                </ul>
-            </DirectLinkCard>
+        <div className='px-2'>
+            <div onClick={() => setid(0)} onMouseLeave={() => setid(-1)} className={`lg:w-10/12 xl:w-8/12 w-full mx-auto bg-white`}>
+                <DirectLinkCard index={0} href={data[0].href} isClicked={id == 0} title={data[0].title} img={data[0].img} ringHover={data[0].ringHover}>
+                    <ul style={{ listStyleType: 'circle'}} className='text-white'>
+                        {data[0].childrenLi}
+                    </ul>
+                </DirectLinkCard>
+            </div>
         </div>
     </>
 }

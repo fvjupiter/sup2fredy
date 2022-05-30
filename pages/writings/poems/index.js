@@ -13,6 +13,7 @@ export default function Poems({ poems, poemSlugList }) {
 
     return <>
         <PreviewCards 
+            isRandom
             title='Poems'
             data={poems}
             folder={'poems'}

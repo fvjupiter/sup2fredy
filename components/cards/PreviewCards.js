@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil';
 import { slugListState } from '../../lib/states';
 import { Icon } from '../../lib/icons';
 
-export default function PreviewCards({ title, data, folder, ringColor }) {
+export default function PreviewCards({ title, data, folder, ringColor, isRandom }) {
     const router = useRouter()
     const asPath = router.asPath
     const param1 = asPath.split('/')[1]
@@ -18,9 +18,9 @@ export default function PreviewCards({ title, data, folder, ringColor }) {
 
     return <>
         <PageTitle title={title} />
-        <div onClick={getRandom} className={`w-fit mx-auto text-center textShadow opacity-80 hover:opacity-100 text-white duration-300 cursor-pointer text-xl mb-2 sm:mt-3`}>
+        {isRandom && <div onClick={getRandom} className={`w-fit mx-auto text-center textShadow opacity-80 hover:opacity-100 text-white duration-300 cursor-pointer text-xl mb-2 sm:mt-3`}>
             <Icon id={'dice'} size={50}/>
-        </div>
+        </div>}
         <div className='w-screen text-center flex justify-center mb-20'>
             <div className='flex flex-wrap justify-center w-screen'>
                 {data.map((card, index) => (

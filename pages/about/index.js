@@ -34,7 +34,7 @@ export default function About({ aboutData }) {
         </div>
         <div className={`${isBigImg ? 'scale-100 rotate-0 ml-0' : 'ml-[440px] sm:ml-0 sm:scale-0 sm:rotate-[540deg]'}
             fixed -mt-12 h-screen w-screen bg-black duration-[7s]`}> 
-                <Image 
+                <Image priority
                     src={Fredy}
                     placeholder="blur"
                     layout='fill' 
@@ -44,8 +44,8 @@ export default function About({ aboutData }) {
         </div>
         <div className={`h-screen absolute w-screen z-40`}>
             <div style={{ marginTop: screen.height - 175 }}
-            className={`w-screen text-white z-10 mb-20`}>
-                <div className={`whitespace-pre-line lg:w-[1010px] w-11/12 mx-auto sm:w-[620px] md:w-[748px]
+            className={`w-screen text-white z-10 mb-20 px-1.5`}>
+                <div className={`whitespace-pre-line lg:w-[1010px] mx-auto sm:w-[620px] md:w-[748px]
                     text-justify text-sm sm:text-base md:text-lg px-4 py-2 sm:px-7 sm:py-5 md:px-8 md:py-6 lg:py-8 lg:px-12
                     bg-black shadow-preview rounded-2xl bg-opacity-80 ring-2 ring-purple-400 border-4 border-white`}>
                     <Fade duratio={3} scale={[0.95, 1]} classN={'font-light'}>
