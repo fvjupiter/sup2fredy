@@ -16,6 +16,8 @@ export default function BottomBar() {
     const param3 = asPath.split('/')[3]
 
     const [isInfo, setisInfo] = useRecoilState(isInfoState)
+    const [infoWasOpened, setinfoWasOpened] = useState(false)
+    useEffect(() => { if(isInfo) setinfoWasOpened(true) },[isInfo])
     const screen = useRecoilValue(screenState)
     const isShowMenu = useRecoilValue(isShowMenuState)
     const [isDelay, setisDelay] = useState(true)
@@ -24,8 +26,8 @@ export default function BottomBar() {
         setTimeout(() => setisDelay(true), 300);
     }, [isInfo])
     
-    // const isSmall = !isInfo && !isHome && screen.width < 640
-    const isSmall = false
+    const isSmall = infoWasOpened && !isInfo && !isHome && screen.width < 640
+    // const isSmall = false
 
     const continueAt = useRecoilValue(continueAtStates)
 
@@ -67,6 +69,7 @@ export default function BottomBar() {
                         icon={item[2]}
                         colors={item[3]} 
                         ifClicked={item[0] == asPath || item[0] == goBackPath ? item[4] : 'bg-opacity-70 bg-black hover:shadow-none ' + item[5]} 
+                        infoWasOpened={infoWasOpened}
                     />
                 ))}
             </div>
@@ -84,16 +87,16 @@ export default function BottomBar() {
     </>
 }
 
-const NavItem = ({ index, href, title, icon, colors, ifClicked, setisClicked }) => {
+const NavItem = ({ index, href, title, icon, colors, ifClicked, infoWasOpened }) => {
     const router = useRouter()
     const [isInfo, setisInfo] = useRecoilState(isInfoState)
     const param2 = router.asPath.split('/')[2]
     const param3 = router.asPath.split('/')[3]
     const isHome = router.pathname.split('/')[1] == ''
     const screen = useRecoilValue(screenState)
-    // const isSmall = !isInfo && !isHome && screen.width < 640
-    const isSmall = false
-    
+    const isSmall = infoWasOpened && !isInfo && !isHome && screen.width < 640
+    // const isSmall = false
+
     return <Link key={index} href={href}>
         <div className='p-1'>
         <div onClick={() => setTimeout(() => setisInfo(false), 300)}
