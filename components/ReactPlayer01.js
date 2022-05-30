@@ -40,7 +40,7 @@ export default function AudioPlayer({ urls, width, height }) {
   return <div className='mx-auto max-w-max mt-4 bg-black rounded-2xl overflow-hidden bigShadow'>
         <ReactPlayer
             ref={playerRef}
-            controls 
+             
             width={width}
             height={height}
             url={urls[id].url} 

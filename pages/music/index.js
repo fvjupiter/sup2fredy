@@ -5,7 +5,8 @@ import PageTitle from '../../components/PageTitle'
 import ReactPlayer01 from '../../components/ReactPlayer01'
 import { screenState } from '../../lib/states'
 
-export default function Music({ soundcloudTracks }) {
+export default function Music({ soundcloudTracks, singles }) {
+    
     const screen = useRecoilValue(screenState)
     const [urls, seturls] = useState(null)
     useEffect(() => {
@@ -15,12 +16,15 @@ export default function Music({ soundcloudTracks }) {
         }
         seturls(urlArr)
     }, [])
-
-    console.log(soundcloudTracks[0].fields.url)
     
     return <>
         <PageTitle title={'Music'}/>
-        {urls && <ReactPlayer01 urls={urls} width={screen.width < 700 ? screen.width : 700-12} height={screen.width < 700 ? screen.width / 1.5 : (700-12) / 1.5}/>}
+        {urls && 
+        <ReactPlayer01 
+            urls={urls} 
+            width={screen.width < 700 ? screen.width : 700-12} 
+            height={screen.width < 700 ? screen.width / 1.5 : (700-12) / 1.5}
+        />}
     </>
 }
 
@@ -33,9 +37,12 @@ export async function getStaticProps() {
   
     const res = await client.getEntries({ content_type: 'soundcloudTrack', order: 'fields.indexFloat' })
 
+    // const res2 = await client.getEntries({ content_type: 'single', order: 'fields.indexFloat' })
+
     return {
         props: {
             soundcloudTracks: res.items,
+            // singles: res2.items
         }
     }
 }
