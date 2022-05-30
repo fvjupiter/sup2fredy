@@ -1,5 +1,5 @@
 import HomeMenuTiles from '../components/cards/HomeMenuCards'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import MagicText from '../components/MagicText'
 import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil'
 import { isLandingPageState, isShowMenuState, screenState } from '../lib/states'
@@ -39,11 +39,16 @@ export default function Home() {
     `You will find a lot of different selfmade content in here`, 
     `so turn on, tune in & enjoy ;-)`
   ]
-  return <>
+  const top1 = useRef(null)
+  return <><div ref={top1} className='absolute top-0'/>
     {displayMagic && screen.width > 110 && <div className={`fixed top-0 z-90 flex justify-center items-center bg-black w-full ${isLandingPage ? 'opacity-100 h-full' : 'opacity-0 h-0'}`}>
       <div className=''>
         <MagicText lineArr={introText}>
-          <div onClick={() => { setTimeout(() => setdisplayMagic(false), 1000); setisLandingPage(false) }} 
+          <div onClick={() => { 
+              setTimeout(() => setdisplayMagic(false), 1000)
+              setisLandingPage(false)
+              top1.current.scrollIntoView() 
+            }} 
             className={`
               text-xl inset-x-1/2 absolute -ml-20 z-40 
               rounded-3xl h-12 w-40 duration-300
