@@ -70,7 +70,7 @@ export default function BottomBar() {
             </div>
             <div onClick={() => setisInfo(true)}
                 className={`p-2 absolute cursor-pointer ${isInfo && 'opacity-0 scale-0'} ${!isSmall ? 'right-[-38px] sm:right-[-44px] bottom-5' : 'right-[-38px] bottom-[4px]'} hover:text-white text-gray-200 transition-all duration-200`}>
-                <div className='ring-gray-600 rounded-lg backdrop bg-black bg-opacity-30 h-6 w-6 sm:h-7 sm:w-7 center'>
+                <div className='ring-gray-600 rounded-md backdrop bg-black bg-opacity-30 h-6 w-6 sm:h-7 sm:w-7 center'>
                     <Icon id='menu' classN='' size={22}/>
                 </div>
             </div>
