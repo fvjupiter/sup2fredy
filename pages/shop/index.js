@@ -3,7 +3,6 @@ import PageTitle from '../../components/PageTitle'
 import MenuCards from '../../components/cards/MenuCards'
 import { bg_shop, bg_placeholderImg } from '../../lib/bg'
 import DirectLinkCard from '../../components/cards/DirectLinkCard'
-import Install from '../../components/Install'
 
 export default function Shop() {
     const [id, setid] = useState(-1)
@@ -18,8 +17,7 @@ export default function Shop() {
                         {data[0].childrenLi}
                     </ul>
                 </DirectLinkCard>
-            </div>hellllooo unterr mir sollte install spawnen
-            <Install />
+            </div>
         </div>
     </>
 }
