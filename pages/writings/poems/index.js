@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRecoilState } from 'recoil'
+import { slugListState } from '../../../lib/states'
 import { createClient } from 'contentful'
 import PreviewCards from '../../../components/cards/PreviewCards'
 
-export default function Poems({ poems }) {
+export default function Poems({ poems, poemSlugList }) {
+    const [slugList, setslugList] = useRecoilState(slugListState)
+    useEffect(() => setslugList({
+        ...slugList,
+        poems: poemSlugList
+    }), [])
 
     return <>
         <PreviewCards 
@@ -23,9 +30,15 @@ export async function getStaticProps() {
   
     const res = await client.getEntries({ content_type: 'poem', order: 'fields.indexFloat' })
 
+    const poemSlugList = []
+    for (let i = 0; i < res.items.length; i++) {
+        poemSlugList.push(res.items[i].fields.slug)
+    }
+
     return {
         props: {
             poems: res.items,
+            poemSlugList: poemSlugList
         }
     }
 }
