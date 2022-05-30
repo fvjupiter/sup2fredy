@@ -19,7 +19,7 @@ export default function ContentCard({ title, date, intro, markdownContent, ringC
     };
 
     return <>
-        <div className='mx-auto whitespace-pre-line min-w-[318px] sm:w-[490px] md:min-w-[620px] md:max-w-[800px] max-w-[490px] text-sm md:text-base mb-20'>
+        <div className='mx-auto whitespace-pre-line min-w-[318px] sm:w-[490px] md:min-w-[620px] md:max-w-[800px] max-w-[490px] text-sm sm:text-base md:text-lg mb-20'>
             <h1 className='textShadow text-2xl md:text-4xl m-4 font-cursive text-white text-center'>{title}</h1>
             <div className={`p-5 mx-auto ${textOrientation} hadow bg-opacity-60 ${bgColor ? bgColor : 'bg-black'} ring-2 ${ringColor ? ringColor : 'ring-white'} border-4 border-white
             text-white rounded-2xl`}

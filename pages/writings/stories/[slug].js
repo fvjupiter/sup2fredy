@@ -31,9 +31,9 @@ export default function Story({ story,storySlugList }) {
         <PageTitle title={story.fields.title}/>
         <div
             className={`lg:w-[1010px] w-11/12 mx-auto sm:w-[620px] md:w-[748px] 
-                px-5 py-3 sm:px-7 sm:py-5 md:px-8 md:py-6 lg:py-8 lg:px-12 mb-8
-                md:text-2xl sm:text-xl text-base text-justify lg:leading-10
-                mt-4 whitespace-pre-line 
+                px-4 py-2 sm:px-7 sm:py-5 md:px-8 md:py-6 lg:py-8 lg:px-12 mb-20
+                text-sm sm:text-base md:text-lg text-justify lg:leading-10
+                mt-4 whitespace-pre-line font-light
                 bg-black bg-opacity-70 text-white rounded-3xl
                 border-4 border-white ring-2 ring-green-400 
             `}>

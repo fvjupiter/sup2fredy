@@ -47,7 +47,7 @@ export default function Home() {
             className={`
               text-xl inset-x-1/2 absolute -ml-20 z-40 
               rounded-3xl h-12 w-40 duration-300
-              hover:mb-1 active:mb-0 mb-0 -bottom-20 hover:text-white text-gray-700
+              hover:mb-1 active:mb-0 mb-0 pb-0.5 -bottom-20 hover:text-white text-gray-700
               hover:border-white font-serif textShadow hover:bg-opacity-0 bg-black 
               bg-opacity-90 border-4 border-gray-700 flex items-center justify-center 
               cursor-pointer`}>
@@ -64,7 +64,7 @@ export default function Home() {
         <li>Background-Images are licence-free from <a href='https://pixabay.com/' target='_blank'>@pixabay</a></li>
         <li>Icons are licence-free from <a href='https://react-icons.github.io/react-icons' target='_blank'>@react-icons</a></li>
       </ul> */}
-      <div onClick={() => { setdisplayMagic(true); setisLandingPage(true) }} className='text-white'>showMaagic</div>
+      {/* <div onClick={() => { setdisplayMagic(true); setisLandingPage(true) }} className='text-white'>showMaagic</div> */}
     </div>
   </>
 }

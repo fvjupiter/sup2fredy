@@ -26,15 +26,15 @@ export default function HomeMenuTiles() {
             : bg_writings.menu, 
         'Poems, Notes & Stories'],
         [continueAt.music, 'Music', <Icon key={'1'} id={'music'} size={70}/>, 'border-orange-400', 'text-orange-400', bg_music.menu, 'Stream'],
-        [continueAt.software, 'Software', <Icon key={'2'} id={'software'} size={70}/>, 'border-pink-400', 'text-pink-400', bg_software.menu, 'Web-Apps / Games'],
-        [continueAt.about, 'About Me', <Icon key={'3'} id={'about'} size={70}/>, 'border-purple-400', 'text-purple-400', Fredy, 'Background & Contact'],
+        [continueAt.software, 'Software', <Icon key={'2'} id={'software'} size={70}/>, 'border-pink-400', 'text-pink-400', bg_software.menu, 'Click-Games'],
+        [continueAt.about, 'About Me', <Icon key={'3'} id={'about'} size={70}/>, 'border-purple-400', 'text-purple-400', Fredy, 'Background'],
         [continueAt.shop, 'Shop', <Icon key={'4'} id={'shop'} size={70}/>, 'border-cyan-400', 'text-cyan-400', 
             continueAt.shop.includes('web-service') ? bg_shop.web 
             : continueAt.shop.includes('art') ? bg_shop.art  
             : continueAt.shop.includes('nft') ? bg_shop.nft  
             : continueAt.shop.includes('merch') ? bg_shop.merch  
             : bg_shop.menu ,
-         "Web-Sites, Art, Nft's, ..."],
+         "Web-Service, ..."],
     ]
     
     return <>

@@ -6,7 +6,7 @@ export default function PreviewCards({ title, data, folder, ringColor }) {
 
     return <>
         <PageTitle title={title} />
-        <div className='w-screen text-center flex justify-center'>
+        <div className='w-screen text-center flex justify-center mb-20'>
             <div className='flex flex-wrap justify-center '>
                 {data.map((card, index) => (
                     <PreviewCard

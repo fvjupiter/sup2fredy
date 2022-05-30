@@ -69,13 +69,12 @@ const Page = ({ children }) => {
         setisInfo(false)
     }
     return (
-        <div ref={top} onScroll={setScrollTop} 
-            className={`fixed top-0 left-0 right-0 bottom-0 
-                overflow-scroll z-10`}
-            >
+        <div ref={top} onScroll={setScrollTop} className={`fixed top-0 left-0 right-0 bottom-0 overflow-scroll z-10`}>
             <ScrollToTop />
-            <div className={`min-h-screen sm:pt-[58px] ${(param1 == 'writings') && 'pt-[58px]'}`}>{children}</div>
-            <Footer />
+            <div className={`min-h-screen sm:pt-[58px] ${(param1 == 'writings') && 'pt-[58px]'}`}>
+                {children}
+            </div>
+            {param1 != 'about' && <Footer />}
         </div>
     )
 }
