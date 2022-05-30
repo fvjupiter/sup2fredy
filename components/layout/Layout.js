@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { continueAtStates, isLandingPageState, isShowMenuState, scrollTopState, isInfoState } from '../../lib/states'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { continueAtStates, isLandingPageState, isShowMenuState, scrollTopState, isInfoState, allowScrollState } from '../../lib/states'
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import ScrollToTop from '../../lib/ScrollToTop';
@@ -45,14 +45,14 @@ export default function Layout({ children }) {
         <FullScreen handle={handleFullscreen}>
             <ScreenObserve />
             <TopBar handleFullscreen={handleFullscreen}/>
-            <Page>{children}</Page>
+            <Page isLandingPage={isLandingPage}>{children}</Page>
             <Background />
             <BottomBar/>
         </FullScreen>
     </>
 }
 
-const Page = ({ children }) => {
+const Page = ({ isLandingPage, children }) => {
     const router = useRouter()
     const asPath = router.asPath
     const param1 = asPath.split('/')[1]
@@ -69,7 +69,7 @@ const Page = ({ children }) => {
         setisInfo(false)
     }
     return (
-        <div ref={top} onScroll={setScrollTop} className={`fixed top-0 left-0 right-0 bottom-0 overflow-scroll z-10`}>
+        <div ref={top} onScroll={setScrollTop} className={`fixed top-0 left-0 right-0 bottom-0 ${!isLandingPage ? 'overflow-scroll' : 'overflow-hidden'} z-10`}>
             <ScrollToTop />
             <div className={`min-h-screen sm:pt-[58px] ${(param1 == 'writings') && 'pt-[58px]'}`}>
                 {children}
