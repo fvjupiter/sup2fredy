@@ -40,6 +40,7 @@ export async function getStaticProps() {
         props: {
             notes: res.items,
             noteSlugList: noteSlugList
-        }
+        },
+        // revalidate: 10,
     }
 }

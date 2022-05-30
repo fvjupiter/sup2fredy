@@ -63,6 +63,7 @@ export async function getStaticProps({ params }) {
         props: {
             note: items[0],
             noteSlugList: noteSlugList
-        }
+        },
+        revalidate: 10,
     }
 }
