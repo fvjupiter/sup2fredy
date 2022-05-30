@@ -38,7 +38,7 @@ export default function HomeMenuTiles() {
     ]
     
     return <>
-        <div className="relative w-full mb-20">
+        <div className="relative w-full">
                 {navItems.map((item, index) => (
                     <NavItem key={index} index={index} 
                         href={item[0]} 
