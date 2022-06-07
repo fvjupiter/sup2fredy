@@ -17,7 +17,7 @@ const data = [
         img: bg_writings.poems,
         ringHover: 'hover:ring-lime-400',
         childrenLi: <>
-            I love poetry especially for the sound &amp; flow while reading.
+            I like poetry especially for the sound &amp; flow while reading.
         </>
     },
     {
@@ -36,7 +36,7 @@ const data = [
         img: bg_writings.stories,
         ringHover: 'hover:ring-green-400',
         childrenLi: <>
-            Most of the Stories happend as described, but actually some, and you need to figure out by yourself which, are a little fictional...
+            Most of the Stories happend as described, but actually some are a little fictional...
         </>
     }
 ]

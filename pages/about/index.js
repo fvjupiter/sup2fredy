@@ -17,7 +17,8 @@ export default function About({ aboutData }) {
 
     const richText_Options = {
         renderNode: {
-            [INLINES.HYPERLINK]: (node, children) => <a target='_blank' rel="noreferrer" href={node.data.uri}>{children}</a>,
+            [INLINES.HYPERLINK]: (node, children) => <Link href={node.data.uri}><a>{children}</a></Link>
+            // <a target='_blank' rel="noreferrer" href={node.data.uri}>{children}</a>,
         },
     }
 
