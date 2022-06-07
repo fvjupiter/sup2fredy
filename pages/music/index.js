@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useRecoilValue } from 'recoil'
 import { createClient } from 'contentful'
 import PageTitle from '../../components/PageTitle'
-import ReactPlayer01 from '../../components/ReactPlayer01'
-import ReactPlayer02 from '../../components/ReactPlayer02'
-import { screenState } from '../../lib/states'
+import MusicPlayer from '../../components/MusicPlayer'
+import { useSetRecoilState } from 'recoil'
+import { trackListState } from '../../lib/states'
 
-export default function Music({ soundcloudTracks, singles }) {
-console.log(singles)
-    const screen = useRecoilValue(screenState)
+export default function Music({ singles }) {
     const [trackList, settrackList] = useState(null)
+    const setTrackList = useSetRecoilState(trackListState)
     useEffect(() => {
         let arr = []
         for (let i = 0; i < singles.length; i++) {
@@ -20,32 +18,12 @@ console.log(singles)
                 lyrics: singles[i].fields.lyrics
             })
         }
-        settrackList(arr)
+        setTrackList(arr)
     }, [])
 
-    // const [urls, seturls] = useState(null)
-    // useEffect(() => {
-    //     let arr = []
-    //     for (let i = 0; i < soundcloudTracks.length; i++) {
-    //         arr.push({ title: soundcloudTracks[i].fields.title, url: soundcloudTracks[i].fields.url })
-    //     }
-    //     seturls(arr)
-    // }, [])
-    
     return <>
         <PageTitle title={'Music'}/>
-        {trackList && 
-        <ReactPlayer02
-            trackList={trackList}
-            width={screen.width < 700 ? screen.width : 700-12} 
-            height={screen.width < 700 ? screen.width / 1.5 : (700-12) / 1.5}
-        />}
-        {/* {urls && 
-        <ReactPlayer01 
-            urls={urls} 
-            width={screen.width < 700 ? screen.width : 700-12} 
-            height={screen.width < 700 ? screen.width / 1.5 : (700-12) / 1.5}
-        />} */}
+        {/* {trackList && <MusicPlayer trackList={trackList}/>} */}
     </>
 }
 
@@ -55,15 +33,12 @@ export async function getStaticProps() {
         space: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_KEY,
     })
-  
-    const res = await client.getEntries({ content_type: 'soundcloudTrack', order: 'fields.indexFloat' })
 
-    const res2 = await client.getEntries({ content_type: 'single', order: 'fields.indexFloat' })
+    const res = await client.getEntries({ content_type: 'single', order: 'fields.indexFloat' })
 
     return {
         props: {
-            soundcloudTracks: res.items,
-            singles: res2.items
+            singles: res.items
         }
     }
 }

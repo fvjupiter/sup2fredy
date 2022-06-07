@@ -62,12 +62,12 @@ export default function TopBar({ handleFullscreen }) {
     }
 
     return (
-        <div className={`${param1 == 'writings' ? 'flex' : 'hidden sm:flex'} z-20 fixed ${isShowMenu || isInfo ? 'top-0' : 'top-[-65px]'} transition-all duration-500 ease-in-out delay-200 left-0 w-screen justify-center`}>
+        <div className={`${param1 == 'writings' ? 'flex' : 'hidden'} z-20 fixed ${isShowMenu || isInfo ? 'top-0' : 'top-[-65px]'} transition-all duration-500 ease-in-out delay-200 left-0 w-screen justify-center`}>
             <div className={`ring-gray-600 h-11 ring-2 rounded-lg sm:rounded-full
                             flex items-center justify-between mx-2 mt-3 
                             backdrop bg-opacity-30 bg-black  transition-all duration-300 max-w-full`}
                 >
-                <Link href={'/'}>
+                {/* <Link href={'/'}>
                     <div className={`group flex items-center justify-center textShadow text-2xl font-bold px-3 py-0.5 cursor-pointer text-white ${(param1 == 'writings' || param1 == 'shop') && 'border-r-2'} sm:border-r-0 border-gray-600`}>
                         <div className={`sidebar-tooltip group-hover:scale-100 bottom-[-48px] origin-top`}>
                             Home
@@ -77,7 +77,7 @@ export default function TopBar({ handleFullscreen }) {
                 </Link>
                 <div className='hidden sm:flex border-r-2 border-l-2 border-gray-600 items-center justify-center px-1 mr-2'>
                     <Toggle icon={isFullscreen ? <Icon id={'fullscreenExit'} size={24}/> : <Icon id={'fullscreen'} size={24}/>} tooltipTitle={`${isFullscreen ? 'exit' : ''} Fullscreen`} clickHandle={toggleFullscreen}/>
-                </div>
+                </div> */}
                 <div className='flex overflow-x-scroll'>
                     {getNavItems() && getNavItems().map((item, index) => (
                         <NavItem key={index} index={index} href={item[0]} 
@@ -96,7 +96,7 @@ export default function TopBar({ handleFullscreen }) {
 
 const NavItem = ({ index, title, href, border, isIcon, tooltipTitle, lastItem }) => {
     return <Link href={href}>
-        <div className={`group ${!isIcon ? `px-3.5 py-1.5 ${lastItem && 'mr-1'}` : 'mx-2'} flex items-center justify-center cursor-pointer text-center rounded-lg sm:rounded-full whitespace-nowrap
+        <div className={`group ${!isIcon ? `px-3.5 py-1.5 ${lastItem && 'mr-1'}` : `${index == 0 && 'ml-4'} mx-2`} flex items-center justify-center cursor-pointer text-center rounded-lg sm:rounded-full whitespace-nowrap
                 ${border ? border : 'button-hover-white'}`}
             >
             {isIcon && <div className={`sidebar-tooltip group-hover:scale-100 bottom-[-48px] origin-top`}>

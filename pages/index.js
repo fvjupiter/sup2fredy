@@ -62,7 +62,7 @@ export default function Home() {
       </div>
     </div>}
     <div className={`w-full sm:w-10/12 md:w-8/12 xl:w-6/12 mx-auto px-1 transition-opacity duration-1000 ${!isLandingPage ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
-      <h1 className='text-4xl sm:text-5xl xl:text-6xl font-cursive textShadow-lg text-white font-extrabold mx-auto w-max my-3 sm:my-5'>SUP2FREDY</h1>
+      <h1 className='text-4xl sm:text-6xl xl:text-7xl font-cursive textShadow-lg text-white font-extrabold mx-auto w-max my-3 sm:mb-6 sm:mt-8 xl:mb-10 xl:mt-12'>SUP2FREDY</h1>
       <HomeMenuTiles />
       <div className='mb-20 center px-4'>
         <div className='text-white text-sm backdrop bg-opacity-60 bg-black w-fit p-1'>You can click &apos;add to Homescreen&apos; in your Web-Browser to install this Blog as an App (PWA) on your phone.</div>

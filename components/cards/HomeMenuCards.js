@@ -4,13 +4,13 @@ import { continueAtStates } from '../../lib/states'
 import Image from 'next/image'
 import { bg_writings, bg_music, bg_software, bg_shop } from '../../lib/bg'
 import Fredy from '../../public/img/fredyCrop.jpeg'
+import Hacker from '../../public/img/hacker.jpg'
 import { useRecoilValue } from 'recoil';
 import Link from 'next/link'
 import { Icon } from '../../lib/icons'
 
 export default function HomeMenuTiles() {
     const router = useRouter()
-    const pathname = router.pathname
     const asPath = router.asPath
     const goBackPath = asPath.split('/').slice(0, -1).join('/')
 
@@ -28,13 +28,14 @@ export default function HomeMenuTiles() {
         [continueAt.music, 'Music', <Icon key={'1'} id={'music'} size={70}/>, 'border-orange-400', 'text-orange-400', bg_music.menu, 'Stream'],
         [continueAt.software, 'Software', <Icon key={'2'} id={'software'} size={70}/>, 'border-pink-400', 'text-pink-400', bg_software.menu, 'Click-Games'],
         [continueAt.about, 'About Me', <Icon key={'3'} id={'about'} size={70}/>, 'border-purple-400', 'text-purple-400', Fredy, 'Background'],
-        [continueAt.shop, 'Shop', <Icon key={'4'} id={'shop'} size={70}/>, 'border-cyan-400', 'text-cyan-400', 
-            continueAt.shop.includes('web-service') ? bg_shop.web 
-            : continueAt.shop.includes('art') ? bg_shop.art  
-            : continueAt.shop.includes('nft') ? bg_shop.nft  
-            : continueAt.shop.includes('merch') ? bg_shop.merch  
-            : bg_shop.menu ,
-         "Web-Service, ..."],
+        // [continueAt.shop, 'Shop', <Icon key={'4'} id={'shop'} size={70}/>, 'border-cyan-400', 'text-cyan-400', 
+        //     continueAt.shop.includes('web-service') ? bg_shop.web 
+        //     : continueAt.shop.includes('art') ? bg_shop.art  
+        //     : continueAt.shop.includes('nft') ? bg_shop.nft  
+        //     : continueAt.shop.includes('merch') ? bg_shop.merch  
+        //     : bg_shop.menu ,
+        //  "Web-Service, ..."],
+
     ]
     
     return <>
@@ -53,6 +54,31 @@ export default function HomeMenuTiles() {
                         setisClicked={setisClicked}
                     />
                 ))}
+            <a href="https://synesthesigns.com/" 
+                rel="noreferrer" 
+                target='_blank'>
+                <div onClick={() => { setisClicked(4); setTimeout(() => setisClicked(-1), 1000) }}
+                    className='relative group w-full mx-auto py-2 mb-4 items-center flex justify-between
+                                    transition-all duration-300
+                                    ring-2 ring-gray-600 border-2 border-black hover:border-white cursor-pointer
+                                    overflow-hidden
+                                    '> 
+                    <Image className={`opacity-50 group-hover:opacity-100 transform group-active:scale-[2] ${4 == isClicked ? 'scale-[2]' : 'scale-[1.08] group-hover:scale-[1]'} transition-all duration-300`}
+                            src={Hacker}
+                            placeholder="blur"
+                            layout='fill' 
+                            objectFit='cover'
+                            objectPosition='center'
+                        />
+                    <div className={`absolute w-full mr-2 border-t-2 border-cyan-400 ${4 == isClicked && 'opacity-0'} group-active:opacity-0 textShadow text-white transition-all duration-100 z-10 backdrop bg-opacity-60 bg-black px-3 py-1 flex items-center justify-between`}>
+                        <div className='text-md sm:text-lg font-extralight'>Synesthesigns</div><div className='text-sm sm:text-lg font-extralight'>Web-Service</div>
+                    </div>
+                    <div
+                        className={`left-[106px] sm:left-32 md:left-40 z-20 bigMenu-icon group border-cyan-400 ${4 == isClicked && 'opacity-0'} text-cyan-400 shadow-4xl group-active:opacity-0 duration-100 border-2 backdrop bg-opacity-60 bg-black`}>
+                        <Icon key={'4'} id={'code'} size={70} classN='animate-spin-slow' />
+                    </div>
+                </div>
+            </a>
         </div>
     </>
 }

@@ -24,6 +24,9 @@ module.exports = {
         'preview': '0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6)',
         'preview2': '0 62.5px 125px -25px rgba(0, 0, 0, 0.7), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6)',
       },
+      animation: {
+        'spin-slow': 'spin 10s linear infinite',
+      },
     },
   },
   variants: {
