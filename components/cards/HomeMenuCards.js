@@ -70,12 +70,12 @@ export default function HomeMenuTiles() {
                             objectFit='cover'
                             objectPosition='center'
                         />
-                    <div className={`absolute w-full mr-2 border-t-2 border-cyan-400 ${4 == isClicked && 'opacity-0'} group-active:opacity-0 transition-all duration-100 z-10 backdrop bg-opacity-60 bg-black px-3 py-1 flex items-center justify-between`}>
+                    <div className={`absolute w-full mr-2 border-t-2 border-cyan-400 ${4 == isClicked && 'opacity-0'} group-active:opacity-0 transition-all duration-100 z-10 backdrop bg-opacity-60 bg-black px-1.5 sm:px-3 py-1 flex items-center justify-between`}>
                         <div className='text-xs sm:text-lg font-bold synesthesigns'>Synesthesigns</div><div className='text-sm sm:text-lg font-extralight textShadow text-white'>Web-Service</div>
                     </div>
                     <div
                         className={`left-[106px] sm:left-32 md:left-40 z-20 bigMenu-icon group border-cyan-400 ${4 == isClicked && 'opacity-0'} text-cyan-400 shadow-4xl group-active:opacity-0 duration-100 border-2 backdrop bg-opacity-60 bg-black`}>
-                        <Icon key={'4'} id={'code'} size={77} classN='group-hover:animate-spin-slow' />
+                        <Icon key={'4'} id={'code'} size={77} classN='animate-spin-slow sm:group-hover:animate-spin-slow sm:animate-none'/>
                     </div>
                 </div>
             </a>
