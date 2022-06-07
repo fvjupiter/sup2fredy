@@ -43,7 +43,6 @@ export default function AudioPlayer({ trackList, width, height }) {
             width={0}
             height={0}
             url={trackList[id].url} 
-            // light={trackList[id].image}
             playing={isPlaying}
             onPlay={() => setisPlaying(true)}
             onPause={() => setisPlaying(false)}
