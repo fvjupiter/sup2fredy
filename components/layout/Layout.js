@@ -53,7 +53,7 @@ export default function Layout({ children }) {
                 {trackList && <div className={`${param1 == 'music' ? 'visible' : 'hidden'}`}><MusicPlayer trackList={trackList} /></div>}
             </Page>
             <Background />
-            <BottomBar/>
+            <BottomBar handleFullscreen={handleFullscreen}/>
         </FullScreen>
     </>
 }

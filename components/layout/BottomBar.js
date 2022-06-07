@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { continueAtStates, isInfoState, isShowMenuState, screenState } from '../../lib/states'
+import { continueAtStates, isFullscreenState, isInfoState, isShowMenuState, screenState } from '../../lib/states'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import Link from 'next/link'
 import { Icon } from '../../lib/icons'
 
-export default function BottomBar() {
+export default function BottomBar({ handleFullscreen }) {
     const router = useRouter()
     const pathname = router.pathname
     const asPath = router.asPath
@@ -25,6 +25,13 @@ export default function BottomBar() {
         setisDelay(false)
         setTimeout(() => setisDelay(true), 300);
     }, [isInfo])
+
+    const [isFullscreen, setisFullscreen] = useRecoilState(isFullscreenState)
+    const toggleFullscreen = () => {
+        if(!isFullscreen) handleFullscreen.enter()
+        else handleFullscreen.exit()
+        setisFullscreen(!isFullscreen)
+    }
     
     // const isSmall = infoWasOpened && !isInfo && !isHome && screen.width < 640
     const isSmall = false
@@ -50,13 +57,18 @@ export default function BottomBar() {
                             rounded-2xl flex items-end justify-between 
                             ring-2 ring-gray-600 backdrop bg-opacity-30 bg-black`}
                 > 
-                <Link href={'/'}>
                     <div onClick={() => setTimeout(() => setisInfo(false), 300)}
-                        className={`${!isInfo && 'opacity-0 scale-0'} absolute top-[3px] left-0 textShadow font-cursive text-xl font-bold px-2 py-1
-                        cursor-pointer text-white transition-all duration-300`}
-                        >SUP2FREDY
+                        className={`${!isInfo && 'opacity-0 scale-0'} absolute top-[3px] left-2 textShadow font-cursive text-xl font-bold px-2 py-1
+                         text-white transition-all duration-300 flex justify-between`}
+                        >
+                        <Link href={'/'}><span className='text-white cursor-pointer'>SUP2FREDY</span></Link>
+                        <Toggle icon={isFullscreen ? <Icon id={'fullscreenExit'} size={18}/> : <Icon id={'fullscreen'} size={18}/>} tooltipTitle={`${isFullscreen ? 'exit' : ''} Fullscreen`} clickHandle={toggleFullscreen}/>
+                        {/* <div className='center'>
+                            <div onClick={previous} className={`button-hover-white`}><BiSkipPrevious size={68}/></div>
+                            <div onClick={togglePlay} className={`button-hover-white`}>{isPlaying ? <BiPause size={80}/> : <BiPlay size={80}/>}</div>
+                            <div onClick={next} className={`button-hover-white`}><BiSkipNext size={68}/></div>
+                        </div> */}
                     </div>
-                </Link>
                 {navItems.map((item, index) => (
                     <NavItem 
                         key={index}
@@ -111,3 +123,15 @@ const NavItem = ({ index, href, title, icon, colors, ifClicked, infoWasOpened })
         </div>
     </Link>
 }
+
+const Toggle = ({ icon, tooltipTitle, clickHandle }) => (
+    <div 
+        onClick={clickHandle} 
+        className='group scale-0 sm:scale-100 rounded-full h-full my-1 button-hover-white ml-5 center cursor-pointer transition-all duration-200'
+        >
+        <div className={`sidebar-tooltip group-hover:scale-100 bottom-[32px] origin-top font-sans`}>
+            {tooltipTitle}
+        </div>
+        {icon}
+    </div>
+)
