@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil'
 import { createClient } from 'contentful'
 import ContentCard from '../../../components/cards/ContentCard'
 import { slugListState } from '../../../lib/states'
+import Comments from '../../../components/Comments'
 
 export default function Note({ note, noteSlugList }) {
     const [slugList, setslugList] = useRecoilState(slugListState)
@@ -21,6 +22,8 @@ export default function Note({ note, noteSlugList }) {
             bgColor={'bg-black'}
             textOrientation='text-justify'
         />
+
+        <Comments border={`border-emerald-400`} bg_success={`bg-emerald-400`} bg_success_hover={`hover:bg-emerald-200`} ring={`ring-emerald-200`}/>
     </>
 }
 

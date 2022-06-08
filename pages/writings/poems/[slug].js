@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRecoilState } from 'recoil'
-import { slugListState } from '../../../lib/states'
+import { commentListState, slugListState } from '../../../lib/states'
 import { createClient } from 'contentful'
 import ContentCard from '../../../components/cards/ContentCard'
+import { getComments, writeComment } from '../../../firebase/action'
+import CommentCard from '../../../components/cards/CommentCard'
+import Comments from '../../../components/Comments'
 
 export default function Poem({ poem, poemSlugList }) {
+
     const [slugList, setslugList] = useRecoilState(slugListState)
     useEffect(() => setslugList({
         ...slugList,
@@ -21,6 +25,9 @@ export default function Poem({ poem, poemSlugList }) {
             bgColor={'bg-black'}
             textOrientation='text-center'
         />
+
+        <Comments border={`border-lime-400`} bg_success={`bg-lime-400`} bg_success_hover={`hover:bg-lime-200`} ring={`ring-lime-200`}/>
+
     </div>
 } 
 

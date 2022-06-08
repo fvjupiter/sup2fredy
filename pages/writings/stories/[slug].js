@@ -7,6 +7,7 @@ import { createClient } from 'contentful'
 import ContentCard from '../../../components/cards/ContentCard'
 import { INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import Comments from '../../../components/Comments'
 
 export default function Story({ story,storySlugList }) {
     const [slugList, setslugList] = useRecoilState(slugListState)
@@ -49,6 +50,8 @@ export default function Story({ story,storySlugList }) {
             bgColor={'bg-black'}
             textOrientation='text-justify'
         />
+
+        <Comments border={`border-green-400`} bg_success={`bg-green-400`} bg_success_hover={`hover:bg-green-200`} ring={`ring-green-200`}/>
     </div>
 }
 
