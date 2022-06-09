@@ -26,7 +26,7 @@ export default function Poem({ poem, poemSlugList }) {
             textOrientation='text-center'
         />
 
-        {/* <Comments border={`border-lime-400`} bg_success={`bg-lime-400`} bg_success_hover={`hover:bg-lime-200`} ring={`ring-lime-200`}/> */}
+        <Comments border={`border-lime-400`} bg_success={`bg-lime-400`} bg_success_hover={`hover:bg-lime-200`} ring={`ring-lime-200`}/>
 
     </div>
 } 

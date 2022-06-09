@@ -9,7 +9,7 @@ export default function ContentCard({ title, date, intro, markdownContent, borde
         },
     }
 
-    return <div className='px-1.5'>
+    return <div className='px-1.5 noselect'>
         <div className={`mx-auto whitespace-pre-line ${lgWidth}
             min-w-[318px] sm:w-[590px] md:min-w-[620px] md:max-w-[800px] max-w-[590px]
             text-sm sm:text-base md:text-lg mb-20`

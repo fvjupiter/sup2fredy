@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { getApp, getApps, initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc, serverTimestamp, collection, getDoc, getDocs } from "firebase/firestore"; 
 
 const firebaseConfig = {
@@ -9,8 +9,21 @@ const firebaseConfig = {
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
-
-const app = initializeApp(firebaseConfig);
+function createFirebaseApp(config) {
+    try {
+      return getApp();
+    } catch {
+        console.log('Firebase successfully initialized.')
+      return initializeApp(config);
+    }
+  }
+  
+const app = createFirebaseApp(firebaseConfig);
+// let app 
+// if (getApps().length < 1) {
+//     app = initializeApp(firebaseConfig)
+// }
+// const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export async function writeComment({ name, comment, folder, folder2 }){

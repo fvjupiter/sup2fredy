@@ -59,6 +59,7 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
             }
         }
         setcomments(commentsArr)
+        console.log('C.js 62 useeffect [param3, commentList] setcomments(): commentsArr', commentsArr)
     }, [param3, commentList])
 
     const updateCommentList = (folder, folder2, doc_id, newData) => {
@@ -72,10 +73,12 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
                 }
             }
         }))
+        console.log('C.js 76 updateCommentList() (callback firestore)')
     }
 
     useEffect(() => {
         if(!commentList.poems.hasOwnProperty(param3)){
+            console.log('C.js 81 UseEffect [param3], getComments() if not already done. param3:', param3)
             getComments({
                 folder: param2,
                 folder2: param3,
@@ -94,7 +97,7 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
                     <div className={`center`}>
                         <input 
                             placeholder='name' 
-                            type={'text'} 
+                            type='text'
                             value={name} 
                             onChange={(e) => setname(e.target.value)} 
                             className={`p-2 rounded-md ${ring} focus:ring-4 outline-none w-full text-xl font-medium`}

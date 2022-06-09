@@ -23,7 +23,7 @@ export default function Note({ note, noteSlugList }) {
             textOrientation='text-justify'
         />
 
-        {/* <Comments border={`border-emerald-400`} bg_success={`bg-emerald-400`} bg_success_hover={`hover:bg-emerald-200`} ring={`ring-emerald-200`}/> */}
+        <Comments border={`border-emerald-400`} bg_success={`bg-emerald-400`} bg_success_hover={`hover:bg-emerald-200`} ring={`ring-emerald-200`}/>
     </>
 }
 

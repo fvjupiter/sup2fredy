@@ -29,7 +29,7 @@ export default function About({ aboutData }) {
     const scrollTop = useRecoilValue(scrollTopState)
     const screen = useRecoilValue(screenState)
     
-    return <>
+    return <div className='noselect'>
         <div className={`${scrollTop > (screen.height - 260) ? 'opacity-0' : 'opacity-100'} fixed w-screen text-center z-40 duration-1000`}>
             <PageTitle title={'About'} classN={``}/>
         </div>
@@ -68,7 +68,7 @@ export default function About({ aboutData }) {
             />
             {/* {screen.width >= 768 && <div className={`top-0 left-0 right-0 bottom-0 absolute z-10 bg-gradient-to-r from-black/70 via-black/0 to-black/70`}/>} */}
         </div>
-    </>
+    </div>
 }
 
 export async function getStaticProps() {
