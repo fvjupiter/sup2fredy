@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BiPause, BiPlay, BiSkipPrevious, BiSkipNext, BiShuffle } from "react-icons/bi";
 import { IoRepeatOutline } from "react-icons/io5";
 import ReactPlayer from 'react-player'
@@ -6,6 +6,8 @@ import ReactPlayer from 'react-player'
 export default function MusicPlayer({ trackList, width, height }) {
     const playerRef = useRef(null)
     const [id, setid] = useState(0)
+    const [isLoading, setisLoading] = useState(true)
+    useEffect(() => setisLoading(true), [id])
     const [isPlaying, setisPlaying] = useState(false)
     const togglePlay = () => setisPlaying(!isPlaying)
     const [isReload, setisReload] = useState(true)
@@ -44,6 +46,7 @@ export default function MusicPlayer({ trackList, width, height }) {
             height={0}
             url={trackList[id].url} 
             playing={isPlaying}
+            onReady={() => setisLoading(false)}
             onPlay={() => setisPlaying(true)}
             onPause={() => setisPlaying(false)}
             onEnded={() => {
@@ -54,6 +57,9 @@ export default function MusicPlayer({ trackList, width, height }) {
                 } else next()
             }}
         />
+        <div className='center'>
+            <div className={`${isLoading ? 'animate-pulse' : 'animate-none opacity-0'} text-white absolute textShadow text-lg font-medium bottom-28`}>is loading...</div>
+        </div>
         <img src={`https:${trackList[id].image}`} className={`object-cover h-80 w-80 sm:h-96 sm:w-96 md:w-[500px] md:h-[500px]`}/>
         <div className='flex items-center justify-center ml-4'>
             <Button handle={toggleShuffle} classN={`mr-2 ${isShuffle ? 'text-cyan-300' : 'button-hover-white'}`} icon={<BiShuffle size={28}/>} />

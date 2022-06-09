@@ -77,6 +77,8 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
     }
 
     useEffect(() => {
+        setname('')
+        setnewComment('')
         if(!commentList.poems.hasOwnProperty(param3)){
             console.log('C.js 81 UseEffect [param3], getComments() if not already done. param3:', param3)
             getComments({
@@ -87,49 +89,49 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
         }
     },[param3])
 
-  return <>
-    <div className='text-4xl text-center textShadow text-white font-cursive mb-2'>Comments</div>
-        <div className={`mb-4 mx-auto w-11/12 sm:w-[620px] bg-black bg-opacity-70 p-4 rounded-xl border-2 ${border}`}>
-            {!successfullySend ?
-                <>
-                <div className={`mx-auto mb-4`}>
-                    <div className='text-white text-center mb-2'>Name</div>
-                    <div className={`center`}>
-                        <input 
-                            placeholder='name' 
-                            type='text'
-                            value={name} 
-                            onChange={(e) => setname(e.target.value)} 
-                            className={`p-2 rounded-md ${ring} focus:ring-4 outline-none w-full text-xl font-medium`}
-                        />
-                    </div>
+  return <div className='px-1.5 mb-20'>
+    <div className='textShadow text-2xl md:text-4xl m-4 font-cursive text-white text-center'>Comments</div>
+    <div className={`mb-4 mx-auto min-w-[318px] sm:w-[590px] md:min-w-[620px] md:max-w-[800px] max-w-[590px] bg-black bg-opacity-70 p-4 rounded-xl border sm:border-2 ${border} ring-4`}>
+        {!successfullySend ?
+            <>
+            <div className={`mx-auto mb-4`}>
+                <div className='text-white text-center mb-2'>Name</div>
+                <div className={`center`}>
+                    <input 
+                        placeholder='name' 
+                        type='text'
+                        value={name} 
+                        onChange={(e) => setname(e.target.value)} 
+                        className={`p-2 rounded-md ${ring} focus:ring-4 outline-none w-full`}
+                    />
                 </div>
-                <div className='text-white text-center mb-2'>Your Comment</div>
-                <textarea 
-                    placeholder='comment' 
-                    value={newComment} 
-                    onChange={(e) => setnewComment(e.target.value)} 
-                    className={`p-2 rounded-md ${ring} focus:ring-4 outline-none w-full mb-4 h-40`}
-                />
-                <div onClick={comment} 
-                    className={`py-2 px-4 w-fit rounded-md ${isValid ? `${bg_success} ${bg_success_hover} cursor-pointer` : 'bg-stone-500 cursor-not-allowed'} mx-auto duration-300`}
-                >
-                    send
-                </div>
-                </>
-            :
-                <div className={`${bg_success} text-center py-4 rounded-md`}>✅ Successfully Sent!</div>
-            }
-        </div>
+            </div>
+            <div className='text-white text-center mb-2'>Your Comment</div>
+            <textarea 
+                placeholder='comment' 
+                value={newComment} 
+                onChange={(e) => setnewComment(e.target.value)} 
+                className={`p-2 rounded-md ${ring} focus:ring-4 outline-none w-full mb-4 h-40`}
+            />
+            <div onClick={comment} 
+                className={`py-2 px-4 w-full text-center rounded-md ${isValid ? `${bg_success} ${bg_success_hover} cursor-pointer` : 'bg-stone-500 cursor-not-allowed'} mx-auto duration-300`}
+            >
+                send
+            </div>
+            </>
+        :
+            <div className={`${bg_success} text-center py-4 rounded-md`}>✅ Successfully Sent!</div>
+        }
+    </div>
 
-        <div className=''>
-            {comments.map((el, index) => (
-                <CommentCard key={index}
-                    name={el.name}
-                    content={el.comment}
-                    classN={`${border}`}
-                />
-            ))}
-        </div>
-  </>
+    <div className=''>
+        {comments.map((el, index) => (
+            <CommentCard key={index}
+                name={el.name}
+                content={el.comment}
+                classN={`${border}`}
+            />
+        ))}
+    </div>
+  </div>
 }
