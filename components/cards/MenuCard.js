@@ -10,13 +10,13 @@ export default function MenuCard({ index, href, isClicked, title, img, ringHover
   const getBoxTitle = () => <div className={`h-20 sm:h-full w-full sm:w-5/12 flex items-center justify-center overflow-hidden`}>
     <div className={`textShadow font-bold text-3xl pt-0.5 sm:pt-0 lg:text-4xl sm:text-2xl text-center text-white font-cursive`}>{title}</div>
   </div>
-  const getBoxDes = border => <div className={`${border} ${isClicked && 'opacity-0'} h-48 sm:h-full w-full sm:w-7/12 px-6 py-3 md:px-10 md:py-5 md:pb-6 flex items-center text-white xl:text-lg md:text-base sm:text-sm font-extralight border-white group-active:opacity-0 duration-300 bg-black`}>
+  const getBoxDes = border => <div className={`${border} ${isClicked && 'opacity-0'} h-48 sm:h-full w-full sm:w-7/12 px-6 py-3 md:px-10 md:py-5 md:pb-6 flex items-center text-white xl:text-lg md:text-base sm:text-sm font-extralight border-white md:group-active:opacity-0 duration-300 bg-black`}>
     {children}
   </div>
 
   return <Link href={href}>
     <div className={`relative sm:flex h-68 sm:h-44 lg:h-56 w-full group cursor-pointer mx-auto overflow-hidden border-4 hover:border-white border-black ring-2 ${ringHover} ring-gray-600 hover:shadow-preview mt-4 duration-300`}>
-        <Image className={`${isClicked ? 'scale-[2]' : 'scale-[1.08] group-hover:scale-[1]'} opacity-100 transform group-active:scale-[2] duration-300`}
+        <Image className={`${isClicked ? 'scale-[2]' : 'scale-[1.08] group-hover:scale-[1]'} opacity-100 transform md:group-active:scale-[2] duration-300`}
           src={img}
           placeholder="blur"
           layout='fill' 

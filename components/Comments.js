@@ -11,7 +11,7 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
     const param2 = asPath.split('/')[2]
     const param3 = asPath.split('/')[3]
 
-    const [name, setname] = useState('')
+    const [name, setname] = useState('Anonymous')
     const [newComment, setnewComment] = useState('')
     const [isValid, setisValid] = useState(false)
     const [successfullySend, setsuccessfullySend] = useState(false)
@@ -77,7 +77,7 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
     }
 
     useEffect(() => {
-        setname('')
+        setname('Anonymous')
         setnewComment('')
         if(!commentList.poems.hasOwnProperty(param3)){
             console.log('C.js 81 UseEffect [param3], getComments() if not already done. param3:', param3)
@@ -94,14 +94,14 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
     <div className={`mb-4 mx-auto min-w-[318px] sm:w-[590px] md:min-w-[620px] md:max-w-[800px] max-w-[590px] bg-black bg-opacity-70 p-4 rounded-xl border sm:border-2 ${border} ring-4`}>
         {!successfullySend ?
             <>
-            <div className={`mx-auto mb-4`}>
+            <div className={`mx-auto mb-3`}>
                 <div className='text-white text-center mb-2'>Name</div>
                 <div className={`center`}>
                     <input 
                         placeholder='name' 
                         type='text'
                         value={name} 
-                        onChange={(e) => setname(e.target.value)} 
+                        onChange={(e) => setname(e.target.value)}
                         className={`p-2 rounded-md ${ring} focus:ring-4 outline-none w-full`}
                     />
                 </div>
@@ -111,7 +111,7 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
                 placeholder='comment' 
                 value={newComment} 
                 onChange={(e) => setnewComment(e.target.value)} 
-                className={`p-2 rounded-md ${ring} focus:ring-4 outline-none w-full mb-4 h-40`}
+                className={`p-2 rounded-md ${ring} focus:ring-4 outline-none w-full mb-3 h-40`}
             />
             <div onClick={comment} 
                 className={`py-2 px-4 w-full text-center rounded-md ${isValid ? `${bg_success} ${bg_success_hover} cursor-pointer` : 'bg-stone-500 cursor-not-allowed'} mx-auto duration-300`}

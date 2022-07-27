@@ -1,7 +1,7 @@
 import React from 'react'
 import Social from './Social'
 
-export default function Footer() {
+export default function Footer({ setisImprint }) {
   return (
     <div className='center h-80 w-screen relative pb-10 z-10 text-white bg-black'>
         <div className='sm:text-lg text-gray-400 text-center'>
@@ -13,8 +13,9 @@ export default function Footer() {
                 rel="noreferrer" 
                 target='_blank'>
                   Synesthesigns
-                </a>.
-              </div>
+              </a>.
+            </div>
+            <div onClick={() => setisImprint(true)} className={`hover:text-gray-300 cursor-pointer font-medium`}>Imprint</div>
         </div>
     </div>
   )

@@ -14,6 +14,7 @@ import BottomBar from './BottomBar';
 import TopBar from './TopBar';
 import Footer from '../footer/Footer'
 import MusicPlayer from '../MusicPlayer';
+import Imprint from './Imprint';
 
 export default function Layout({ children }) {
     const router = useRouter()
@@ -27,6 +28,7 @@ export default function Layout({ children }) {
     const [isLandingPage, setisLandingPage] = useRecoilState(isLandingPageState)
     const [isShowMenu, setisShowMenu] = useRecoilState(isShowMenuState)
     const trackList = useRecoilValue(trackListState)
+    const [isImprint, setisImprint] = useState(false)
 
     useEffect(() => setisLandingPage(true), [])
 
@@ -47,8 +49,9 @@ export default function Layout({ children }) {
         <HeadMeta />
         <FullScreen handle={handleFullscreen}>
             <ScreenObserve />
+            <Imprint isImprint={isImprint} setisImprint={setisImprint}/>
             <TopBar handleFullscreen={handleFullscreen}/>
-            <Page isLandingPage={isLandingPage}>
+            <Page isLandingPage={isLandingPage} setisImprint={setisImprint}>
                 {children}
                 {trackList && <div className={`${param1 == 'music' ? 'visible' : 'hidden'}`}><MusicPlayer trackList={trackList} /></div>}
             </Page>
@@ -58,7 +61,7 @@ export default function Layout({ children }) {
     </>
 }
 
-const Page = ({ isLandingPage, children }) => {
+const Page = ({ isLandingPage, setisImprint, children }) => {
     const router = useRouter()
     const asPath = router.asPath
     const param1 = asPath.split('/')[1]
@@ -80,7 +83,7 @@ const Page = ({ isLandingPage, children }) => {
             <div className={`min-h-screen ${(param1 == 'writings') && 'pt-[58px]'}`}>
                 {children}
             </div>
-            {param1 != 'about' && <Footer />}
+            {param1 != 'about' && <Footer setisImprint={setisImprint}/>}
         </div>
     )
 }
