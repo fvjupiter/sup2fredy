@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { continueAtStates } from '../../lib/states'
 import Image from 'next/image'
-import { bg_writings, bg_music, bg_software, bg_shop } from '../../lib/bg'
+import { bg_writings, bg_music, bg_software } from '../../lib/bg'
 import Fredy from '../../public/img/fredyCrop.jpeg'
 import Hacker from '../../public/img/hacker.jpg'
 import { useRecoilValue } from 'recoil';
@@ -63,18 +63,18 @@ export default function HomeMenuTiles() {
                                     ring-2 ring-gray-600 border-2 border-black hover:border-white cursor-pointer
                                     overflow-hidden
                                     '> 
-                    <Image className={`opacity-50 group-hover:opacity-100 transform group-active:scale-[2] ${4 == isClicked ? 'scale-[2]' : 'scale-[1.08] group-hover:scale-[1]'} transition-all duration-300`}
-                            src={Hacker}
-                            placeholder="blur"
-                            layout='fill' 
-                            objectFit='cover'
-                            objectPosition='center'
-                        />
-                    <div className={`absolute w-full mr-2 border-t-2 border-cyan-400 ${4 == isClicked && 'opacity-0'} group-active:opacity-0 transition-all duration-100 z-10 backdrop bg-opacity-60 bg-black px-1.5 sm:px-3 py-1 flex items-center justify-between`}>
+                    <Image className={`opacity-50 group-hover:opacity-100 transform md:group-active:scale-[2] ${4 == isClicked ? 'scale-[2]' : 'scale-[1.08] group-hover:scale-[1]'} transition-all duration-300`}
+                        src={Hacker}
+                        placeholder="blur"
+                        layout='fill' 
+                        objectFit='cover'
+                        objectPosition='center'
+                    />
+                    <div className={`absolute w-full mr-2 border-t-2 border-cyan-400 ${4 == isClicked && 'opacity-0'} md:group-active:opacity-0 transition-all duration-100 z-10 backdrop bg-opacity-60 bg-black px-1.5 sm:px-3 py-1 flex items-center justify-between`}>
                         <div className='text-xs sm:text-lg font-bold synesthesigns'>Synesthesigns</div><div className='text-sm sm:text-lg font-extralight textShadow text-white'>Web-Service</div>
                     </div>
                     <div
-                        className={`left-[106px] sm:left-32 md:left-40 z-20 bigMenu-icon group border-cyan-400 ${4 == isClicked && 'opacity-0'} text-cyan-400 shadow-4xl group-active:opacity-0 duration-100 border-2 backdrop bg-opacity-60 bg-black`}>
+                        className={`left-[106px] sm:left-52 lg:left-64 z-20 bigMenu-icon group border-cyan-400 ${4 == isClicked && 'opacity-0'} text-cyan-400 shadow-4xl md:group-active:opacity-0 duration-100 border-2 backdrop bg-opacity-60 bg-black`}>
                         <Icon key={'4'} id={'code'} size={77} classN='animate-spin-slow sm:group-hover:animate-spin-slow sm:animate-none'/>
                     </div>
                 </div>
@@ -87,22 +87,22 @@ const NavItem = ({ index, href, title, content, icon, border, text, bgImg, ifCli
     return <Link href={href}>
         <div onClick={() => { setisClicked(index) }}
              className='relative group w-full mx-auto py-2 mb-4 items-center flex justify-between
-                             transition-all duration-300
-                            ring-2 ring-gray-600 border-2 border-black hover:border-white cursor-pointer
-                            overflow-hidden
-                            '> 
-            <Image className={`opacity-50 group-hover:opacity-100 transform group-active:scale-[2] ${ifClickedScale} transition-all duration-300`}
-                    src={bgImg}
-                    placeholder="blur"
-                    layout='fill' 
-                    objectFit='cover'
-                    objectPosition='center'
-                />
-            <div className={`absolute w-full mr-2 border-t-2 ${border} ${ifClickedOpacity} group-active:opacity-0 textShadow text-white transition-all duration-100 z-10 backdrop bg-opacity-60 bg-black px-3 py-1 flex items-center justify-between`}>
+                transition-all duration-300
+                ring-2 ring-gray-600 border-2 border-black hover:border-white cursor-pointer
+                overflow-hidden
+            '> 
+            <Image className={`opacity-50 group-hover:opacity-100 transform md:group-active:scale-[2] ${ifClickedScale} transition-all duration-300`}
+                src={bgImg}
+                placeholder="blur"
+                layout='fill' 
+                objectFit='cover'
+                objectPosition='center'
+            />
+            <div className={`absolute w-full mr-2 border-t-2 ${border} ${ifClickedOpacity} md:group-active:opacity-0 textShadow text-white transition-all duration-100 z-10 backdrop bg-opacity-60 bg-black px-3 py-1 flex items-center justify-between`}>
                 <div className='text-md sm:text-lg font-extralight'>{title}</div><div className='text-sm sm:text-lg font-extralight'>{content}</div>
             </div>
             <div
-                className={`left-[106px] sm:left-32 md:left-40 z-20 bigMenu-icon group ${border} ${ifClickedOpacity} ${text} shadow-4xl group-active:opacity-0 duration-100 border-2 backdrop bg-opacity-60 bg-black`}>
+                className={`left-[106px] sm:left-52 lg:left-64 z-20 bigMenu-icon group ${border} ${ifClickedOpacity} ${text} shadow-4xl md:group-active:opacity-0 duration-100 border-2 backdrop bg-opacity-60 bg-black`}>
                 {icon}
             </div>
         </div>
