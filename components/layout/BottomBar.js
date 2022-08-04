@@ -39,7 +39,7 @@ export default function BottomBar({ handleFullscreen }) {
     }
 
     
-    const isSmall = infoWasOpened && !isInfo && screen.width < 640
+    const isSmall = infoWasOpened && !isInfo && screen.width < 768
     // const isSmall = false
 
     const continueAt = useRecoilValue(continueAtStates)
@@ -130,7 +130,7 @@ const NavItem = ({ index, href, title, icon, colors, ifClicked, infoWasOpened })
     const param3 = router.asPath.split('/')[3]
     const isHome = router.pathname.split('/')[1] == ''
     const screen = useRecoilValue(screenState)
-    const isSmall = infoWasOpened && !isInfo && screen.width < 640
+    const isSmall = infoWasOpened && !isInfo && screen.width < 768
     // const isSmall = false
 
     return <Link key={index} href={href}>
