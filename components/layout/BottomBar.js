@@ -34,9 +34,10 @@ export default function BottomBar({ handleFullscreen }) {
     }
 
     const shareHandle = () => {
-        navigator.clipboard.writeText(`https://${window.location.hostname}${asPath}`)
-        alert('Link (url) copied to clipboard. (Link (url) in Zwischenablage kopiert.)')
+        setTimeout(() => alert('Link copied to clipboard.'), 10)
+        return navigator.clipboard.writeText(`https://${window.location.hostname}${asPath}`)
     }
+
     
     const isSmall = infoWasOpened && !isInfo && screen.width < 640
     // const isSmall = false
