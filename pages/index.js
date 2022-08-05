@@ -48,7 +48,7 @@ export default function Home() {
               setTimeout(() => setdisplayMagic(false), 1000)
               setisLandingPage(false)
               top1.current.scrollIntoView() 
-            }} 
+            }}
             className={`
               text-xl inset-x-1/2 absolute -ml-20 z-40 
               rounded-3xl h-12 w-40 duration-300
