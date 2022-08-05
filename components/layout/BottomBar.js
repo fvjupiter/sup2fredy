@@ -38,7 +38,6 @@ export default function BottomBar({ handleFullscreen }) {
         return navigator.clipboard.writeText(`https://${window.location.hostname}${asPath}`)
     }
 
-    
     const isSmall = infoWasOpened && !isInfo && screen.width < 768
     // const isSmall = false
 

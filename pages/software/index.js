@@ -9,7 +9,14 @@ export default function Games() {
                 title: 'Mathgame',
                 slug: 'mathgame',
             }
-        }
+        },
+        {
+            slug: 'undercover',
+            fields: {
+                title: 'Undercover',
+                slug: 'undercover',
+            }
+        },
     ]
     return <PreviewCards 
         title='Software'
