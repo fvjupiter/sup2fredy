@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { continueAtStates, isLandingPageState, isShowMenuState, scrollTopState, isInfoState, allowScrollState, trackListState } from '../../lib/states'
+import { continueAtStates, isLandingPageState, isShowMenuState, scrollTopState, isInfoState, allowScrollState, trackListState, displayMagicState } from '../../lib/states'
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import ScrollToTop from '../../lib/ScrollToTop';
@@ -17,10 +17,19 @@ import MusicPlayer from '../MusicPlayer';
 import Imprint from './Imprint';
 
 export default function Layout({ children }) {
+    // const displayMagic = useRecoilValue(displayMagicState)
     const router = useRouter()
     const asPath = router.asPath
     const goBackPath = asPath.split('/').slice(0, -1).join('/')
     const param1 = asPath.split('/')[1]
+
+    const [showInstaAlert, setshowInstaAlert] = useState(true)
+    useEffect(() => {
+        if(showInstaAlert && navigator.userAgent.includes("Instagram")) {
+            setshowInstaAlert(false)
+            alert('Hello Instagram-User, please open the app in an external browser at sup2fredy.vercel.app 💖')
+        }
+    }, [asPath])
 
     const handleFullscreen = useFullScreenHandle()
 

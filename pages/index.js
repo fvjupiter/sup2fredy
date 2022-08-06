@@ -2,11 +2,11 @@ import HomeMenuTiles from '../components/cards/HomeMenuCards'
 import React, { useState, useEffect, useRef } from 'react'
 import MagicText from '../components/MagicText'
 import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil'
-import { isLandingPageState, isShowMenuState, screenState } from '../lib/states'
+import { displayMagicState, isLandingPageState, isShowMenuState, screenState } from '../lib/states'
 
 export default function Home() {
   const setisShowMenu = useSetRecoilState(isShowMenuState)
-  const [displayMagic, setdisplayMagic] = useState(true)
+  const [displayMagic, setdisplayMagic] = useRecoilState(displayMagicState)
   const [isLandingPage, setisLandingPage] = useRecoilState(isLandingPageState)
   const screen = useRecoilValue(screenState)
   useEffect(() => setisShowMenu(isLandingPage ? false : true), [isLandingPage])
