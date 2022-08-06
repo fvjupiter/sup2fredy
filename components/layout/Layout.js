@@ -27,7 +27,7 @@ export default function Layout({ children }) {
     useEffect(() => {
         if(showInstaAlert && navigator.userAgent.includes("Instagram")) {
             setshowInstaAlert(false)
-            alert('Hello Instagram-User, please open the app in an external browser at sup2fredy.vercel.app 💖')
+            alert('Dear Instagram-User, for a better experience, please open the app in an external browser at sup2fredy.vercel.app 💖\nSincerely, Fredy')
         }
     }, [asPath])
 
