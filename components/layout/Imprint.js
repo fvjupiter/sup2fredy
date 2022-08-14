@@ -47,7 +47,7 @@ export default function Imprint({ isImprint, setisImprint }) {
 
                 Verantwortlich für den Inhalt nach §55 Abs. 2 RStV:<br/>
                 Frederik Schoof, Shp. Koppelweg 51, 21244 Buchholz i.d.N.<br/>
-                +49 176 61757015, schoof.frederik@gmail.com, USt-IdNr. XXXX, Finanzamt XXXX
+                schoof.frederik@gmail.com, USt-IdNr. XXXX, Finanzamt XXXX
                 <br/><br/>
                 <span className="font-bold">Copyright:</span><br/>
                 Unless otherwise indicated, all material on this website is copyrighted by Frederik Schoof. All rights reserved. No part of this website, either text or image may be used for any purpose other than personal use. Reproduction, modification, storage in a retrieval system or retransmission, in any form or by any means, electronic, mechanical or otherwise, for reasons other than personal use, is strictly prohibited without prior written consent.

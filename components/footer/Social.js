@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { GoMail } from "react-icons/go";
 import { FaTelegramPlane, FaWhatsapp, FaInstagram } from "react-icons/fa";
-import { BsGithub } from "react-icons/bs";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { FiLinkedin } from "react-icons/fi";
 
 
 export default function Social() {
@@ -26,9 +27,12 @@ export default function Social() {
         <Item infoTitle={'telegram.me/fvjupiter'} href={'https://telegram.me/fvjupiter'} newTab bg={'bg-gradient-to-tr from-slate-800 to-black'}>
             <FaTelegramPlane size={size-4} className='text-white'/>
         </Item>
-        <Item infoTitle={'+49 176 617 57015'} href={'https://wa.me/+4917661757015'} newTab bg={'bg-gradient-to-tr from-lime-400 to-lime-400'}>
-            <FaWhatsapp size={size} className='text-white'/>
+        <Item infoTitle={'linkedin.com/...'} href={'https://www.linkedin.com/in/frederik-schoof-a38638248/'} newTab bg={'bg-gradient-to-tr from-slate-800 to-black'}>
+            <FiLinkedin size={size-5} className='text-white'/>
         </Item>
+        {/* <Item infoTitle={'+49 176 617 57015'} href={'https://wa.me/+4917661757015'} newTab bg={'bg-gradient-to-tr from-lime-400 to-lime-400'}>
+            <FaWhatsapp size={size} className='text-white'/>
+        </Item> */}
         <Item infoTitle={'github.com/fvjupiter'} href={'https://github.com/fvjupiter'} newTab bg={'bg-gradient-to-tr from-slate-800 to-black'}>
             <BsGithub size={size-5} className='text-white'/>
         </Item>
