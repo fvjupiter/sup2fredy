@@ -58,8 +58,8 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
                 commentsArr.push(commentList[param2][param3][i])
             }
         }
+        commentsArr.sort((a, b) => a.createdAt - b.createdAt)
         setcomments(commentsArr)
-        console.log('C.js 62 useeffect [param3, commentList] setcomments(): commentsArr', commentsArr)
     }, [param3, commentList])
 
     const updateCommentList = (folder, folder2, doc_id, newData) => {
@@ -94,8 +94,8 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
     <div className={`mb-4 mx-auto min-w-[318px] sm:w-[590px] md:min-w-[620px] md:max-w-[800px] max-w-[590px] bg-black bg-opacity-70 p-4 rounded-xl border sm:border-2 ${border} ring-4`}>
         {!successfullySend ?
             <>
-            <div className={`mx-auto mb-3`}>
-                <div className='text-white text-center mb-2'>Name</div>
+            <div className={`mx-auto mb-4`}>
+                {/* <div className='text-white text-center mb-2'>Name</div> */}
                 <div className={`center`}>
                     <input 
                         placeholder='name' 
@@ -106,7 +106,7 @@ export default function Comments({ border, ring, bg_success, bg_success_hover })
                     />
                 </div>
             </div>
-            <div className='text-white text-center mb-2'>Your Comment</div>
+            {/* <div className='text-white text-center mb-2'>Your Comment</div> */}
             <textarea 
                 placeholder='comment' 
                 value={newComment} 
