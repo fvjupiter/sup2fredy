@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { commentListState, slugListState } from "../../../lib/states";
+import { slugListState } from "../../../lib/states";
 import { createClient } from "contentful";
 import ContentCard from "../../../components/cards/ContentCard";
-import { getComments, writeComment } from "../../../firebase/action";
-import CommentCard from "../../../components/cards/CommentCard";
 import Comments from "../../../components/Comments";
 
 export default function Poem({ poem, poemSlugList }) {

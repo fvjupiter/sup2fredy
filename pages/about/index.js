@@ -4,7 +4,7 @@ import Fredy from "../../public/img/fredy.jpeg";
 import RainbowFractal from "../../public/img/rainbowFractal.jpg";
 import Image from "next/image";
 import { screenState, scrollTopState } from "../../lib/states";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import Fade from "../../components/Fade";
 import PageTitle from "../../components/PageTitle";
 import Link from "next/link";
@@ -20,7 +20,6 @@ export default function About({ aboutData }) {
           <a>{children}</a>
         </Link>
       ),
-      // <a target='_blank' rel="noreferrer" href={node.data.uri}>{children}</a>,
     },
   };
 
