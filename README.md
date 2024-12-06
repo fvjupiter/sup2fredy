@@ -5,3 +5,5 @@ This project is public but the source code itself is not licensed under any open
 ## My personal blog, including poems, notes, stories and music I created throughout the years
 
 - Built with Next.js, Tailwind CSS, Contentful and Firestore
+
+check it out at [blog-jakob.vercel.app](blog-jakob.vercel.app/)
