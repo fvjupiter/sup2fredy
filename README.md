@@ -6,4 +6,4 @@ This project is public but the source code itself is not licensed under any open
 
 - Built with Next.js, Tailwind CSS, Contentful and Firestore
 
-check it out at [blog-jakob.vercel.app](blog-jakob.vercel.app/)
+check it out at [sup2fredy.art/](https://www.sup2fredy.art/)
